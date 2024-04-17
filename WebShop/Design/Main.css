@@ -1,0 +1,31 @@
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #ffffff;
+        font-family: Arial, sans-serif;
+        margin: 10px;
+        padding: 0;
+        box-sizing: border-box;
+        color: #000000;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1e1f22;
+        font-family: Arial, sans-serif;
+        margin: 10px;
+        padding: 0;
+        box-sizing: border-box;
+        color: #ffffff;
+    }
+}
+
+.footer {
+    text-align: left;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
