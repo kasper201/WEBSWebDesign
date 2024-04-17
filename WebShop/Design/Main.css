@@ -3,7 +3,7 @@
     body {
         background-color: #ffffff;
         font-family: Arial, sans-serif;
-        margin: 10px;
+        margin: 0;
         padding: 0;
         box-sizing: border-box;
         color: #000000;
@@ -15,7 +15,7 @@
     body {
         background-color: #1e1f22;
         font-family: Arial, sans-serif;
-        margin: 10px;
+        margin: 0;
         padding: 0;
         box-sizing: border-box;
         color: #ffffff;
@@ -31,8 +31,9 @@
 }
 
 .menu {
+    background: linear-gradient( 90deg, #b9002c 0%, #006ba4 100% );
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     justify-content: space-between;
     padding: 10px;
 }
@@ -49,8 +50,15 @@
 
 .logo {
     width: auto;
-    height: 50px;
+    height: 60px;
     margin: 0 auto;
     display: block;
     object-fit: contain;
+}
+
+.LoginImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
 }

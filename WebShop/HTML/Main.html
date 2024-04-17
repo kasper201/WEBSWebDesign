@@ -8,13 +8,26 @@
 <body>
 <div class="main">
     <div class="menu">
-        <img src="../Images/Logo.png" alt="Logo" class="logo">
-        <button class="GoToHome" href="Main.php">Home</button>
+        <a href="Main.html">
+            <img src="../Images/Logo.png" alt="Logo" class="logo" onclick="">
+        </a>
         <button class="GoToProducts" href="Products.php">Products</button>
         <button class="GoToContact" href="Contact.php">Contact</button>
         <button class="GoToAbout" href="About.php">About</button>
-        <button class="Login" href="Login.php">Login</button>
+        <a href="Login.php">
+            <img src="../Images/Login.png" alt="Login" class="LoginImage">
+        </a>
     </div>
+    <div class="LeftBar">
+        <h2>Categories</h2>
+        <ul>
+            <li><a href="Products.php">All</a></li>
+            <li><a href="Products.php?category=1">Electronics</a></li>
+            <li><a href="Products.php?category=2">Clothing</a></li>
+            <li><a href="Products.php?category=3">Books</a></li>
+            <li><a href="Products.php?category=4">Games</a></li>
+            <li><a href="Products.php?category=5">Movies</a></li>
+        </ul>
     <div class="content">
         <h2>Welcome to Kaspers Shop</h2>
         <p>something should be put here ig.</p>
