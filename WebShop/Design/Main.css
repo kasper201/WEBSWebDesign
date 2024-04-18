@@ -57,8 +57,9 @@
 }
 
 .LoginImage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
+        width: auto;
+        height: 60px;
+        margin: 0 auto;
+        display: block;
+        object-fit: contain;
 }

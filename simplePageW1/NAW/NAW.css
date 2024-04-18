@@ -41,6 +41,11 @@
     padding: 10px;
 }
 
+.naw th a {
+    color: white; /* Change the color to black or any other color you prefer */
+    text-decoration: none; /* Remove underline if needed */
+}
+
 tr:nth-child(even) {
     background: linear-gradient( 90deg, #b9002c 0%, #006ba4 100% );
 }
