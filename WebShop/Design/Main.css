@@ -1,3 +1,4 @@
+
 /* Light mode */
 @media (prefers-color-scheme: light) {
     body {
@@ -33,7 +34,7 @@
 .menu {
     background: linear-gradient( 90deg, #b9002c 0%, #006ba4 100% );
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     justify-content: space-between;
     padding: 10px;
     align-items: center;
@@ -43,9 +44,8 @@
 .menu-item {
     position: relative;
 }
-
-.GoToProducts {
-    cursor: pointer;
+.submenu-container {
+    position: relative;
 }
 
 .submenu {
@@ -55,13 +55,19 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.71);
     z-index: 1;
-    justify-content: space-between;
     padding: 10px;
     border-radius: 10px;
+    top: 100%;
+    left: 0;
 }
 
-.Products:hover .submenu {
+.Products:hover .submenu,
+.submenu-container:hover .submenu {
     display: block;
+}
+
+.GoToProducts {
+    cursor: pointer;
 }
 
 .menu button{
