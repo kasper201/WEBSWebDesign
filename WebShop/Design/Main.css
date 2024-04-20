@@ -44,6 +44,7 @@
 .menu-item {
     position: relative;
 }
+
 .submenu-container {
     position: relative;
 }
@@ -80,14 +81,8 @@
     cursor: pointer;
 }
 
-.logo {
-    width: auto;
-    height: 60px;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
-}
-
+.logo,
+.BasketImage,
 .LoginImage {
         width: auto;
         height: 60px;
