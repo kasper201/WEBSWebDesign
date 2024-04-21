@@ -10,7 +10,7 @@
 <body>
 <div class="main">
     <div class="menu">
-        <a href="Main.html">
+        <a href="../HTML/Main.html">
             <img src="../Images/Logo.png" alt="Logo" class="logo" onclick="">
         </a>
         <div class="Products">
