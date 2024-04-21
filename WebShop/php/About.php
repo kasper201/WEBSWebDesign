@@ -27,8 +27,8 @@
                 </ul>
             </div>
         </div>
-        <button class="GoToContact">Contact</button>
-        <button class="GoToAbout">About Us</button>
+        <button class="GoToContact" href="Contact.php">Contact</button>
+        <button class="GoToAbout" href="About.php">About Us</button>
         <a href="Basket.php">
             <img src="../Images/Basket.png" alt="Basket" class="BasketImage">
         </a>
@@ -47,3 +47,4 @@
 <script src="../JS/main.js"></script>
 </body>
 </html>
+<?php

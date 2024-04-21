@@ -32,13 +32,30 @@
 }
 
 .menu {
+    position: relative;
     background: linear-gradient( 90deg, #b9002c 0%, #006ba4 100% );
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
     justify-content: space-between;
-    padding: 10px;
     align-items: center;
+    padding: 10px;
     text-align: center;
+    font-weight: bold;
+    font-size-adjust: 0.9;
+}
+
+.menu button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: inherit;
+    font-size-adjust: inherit;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    padding: 0 20px;
 }
 
 .menu-item {
@@ -49,16 +66,24 @@
 }
 
 .submenu {
+    font-size-adjust: 0.7;
     display: none;
     position: absolute;
-    background-color: #d5d5d5;
-    min-width: 160px;
+    background-color: #38414f;
+    width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.71);
     z-index: 1;
     padding: 10px;
     border-radius: 10px;
-    top: 100%;
-    left: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.submenu.open {
+    display: grid;
+    opacity: 1;
+    transform: translateY(-10px);
 }
 
 .GoToProducts {
