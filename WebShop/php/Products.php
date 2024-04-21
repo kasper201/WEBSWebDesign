@@ -6,4 +6,7 @@
     <link rel="stylesheet" href="../Design/Main.css">
     <link rel="icon" href="../Images/LogoColour.png">
 </head>
-<?php
+<body>
+    test
+</body>
+</html>

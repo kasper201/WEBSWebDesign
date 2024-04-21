@@ -44,7 +44,6 @@
 .menu-item {
     position: relative;
 }
-
 .submenu-container {
     position: relative;
 }
@@ -62,13 +61,9 @@
     left: 0;
 }
 
-.Products:hover .submenu,
-.submenu-container:hover .submenu {
-    display: block;
-}
-
 .GoToProducts {
     cursor: pointer;
+    padding: 30px;
 }
 
 .menu button{
