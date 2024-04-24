@@ -37,13 +37,8 @@
         </a>
     </div>
     <div class="content">
-        <div class="sortBy">
-
-        </div>
-        <div class="Products">
-            <div class="productImage">
-                <img src="../Images/Logo.png" alt="Product" class="productImage">
-            </div>
+        <div class="productImage">
+            <img src="../Images/Logo.png" alt="Product" class="productImage">
         </div>
     </div>
     <footer>
