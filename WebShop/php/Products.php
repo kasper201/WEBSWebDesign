@@ -50,6 +50,6 @@
         <p>&copy; 2024 Kasper Janssen</p>
     </footer>
 </div>
-<script src="../JS/main.js"></script>
+<script src="../JS/Template.js"></script>
 </body>
 </html>
