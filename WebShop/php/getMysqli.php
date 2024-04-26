@@ -6,11 +6,18 @@ function getMysqli()
 {
     session_start(); // Start the session
 
+    $host = "localhost";
+    $port = 3306;
+    $database = "WEBDesign";
+    $_SESSION['db_host'] = $host;
+    $_SESSION['db_port'] = $port;
+    $_SESSION['db_database'] = $database;
+
 // Retrieve the database credentials from the session
     $host = $_SESSION['db_host'];
     $port = $_SESSION['db_port'];
-    $username = $_SESSION['db_username'];
-    $password = $_SESSION['db_password'];
+    $username = 'User2';
+    $password = 'password';
     $database = $_SESSION['db_database'];
 
 // Create a new database connection
