@@ -38,7 +38,7 @@
         </a>
     </div>
     <div class="content">
-        <div class="sortBy">
+        <div class="items">
 
         </div>
 
@@ -49,6 +49,8 @@
 </div>
 <script src="../JS/Template.js"></script>
 <script src="../JS/OverviewPages.js"></script>
-<script> fetchGeneral({category: "1"})</script>
+<script>
+    fetchGeneral({category: "1"})
+</script>
 </body>
 </html>

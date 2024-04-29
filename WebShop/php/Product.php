@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaspers Shop</title>
     <link rel="stylesheet" href="../Design/Template.css">
+    <link rel="stylesheet" href="../Design/Product.css">
     <link rel="icon" href="../Images/LogoColour.png">
 </head>
 <body>
@@ -37,8 +38,8 @@
         </a>
     </div>
     <div class="content">
-        <div class="productImage">
-            <img src="../Images/Logo.png" alt="Product" class="productImage">
+        <div class="product">
+
         </div>
     </div>
     <footer>
@@ -46,5 +47,6 @@
     </footer>
 </div>
 <script src="../JS/Template.js"></script>
+<script src="../JS/Product.js"></script>
 </body>
 </html>

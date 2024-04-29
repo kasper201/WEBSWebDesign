@@ -6,7 +6,7 @@ function fetchGeneral(params)
             if (this.responseText.trim() !== "") {
                 let response = JSON.parse(this.responseText);
                 let products = Array.isArray(response) ? response : [response]; // make sure that it is actually an array
-                let productsContainer = document.querySelector('.onSale');
+                let productsContainer = document.querySelector('.items');
 
                 // log to console for debugging
                 console.log(products);
