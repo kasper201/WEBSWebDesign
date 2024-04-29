@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaspers Shop</title>
     <link rel="stylesheet" href="../Design/Template.css">
+    <link rel="stylesheet" href="../Design/OverviewPages.css">
     <link rel="icon" href="../Images/LogoColour.png">
 </head>
 <body>
@@ -29,10 +30,10 @@
         </div>
         <button class="GoToContact">Contact</button>
         <button class="GoToAbout">About Us</button>
-        <a href="Basket.php">
+        <a href="./Basket.php">
             <img src="../Images/Basket.png" alt="Basket" class="BasketImage">
         </a>
-        <a href="Login.php">
+        <a href="./Login.php">
             <img src="../Images/Login.png" alt="Login" class="LoginImage">
         </a>
     </div>
@@ -40,16 +41,14 @@
         <div class="sortBy">
 
         </div>
-        <div class="Products">
-            <div class="productImage">
-                <img src="../Images/Logo.png" alt="Product" class="productImage">
-            </div>
-        </div>
+
     </div>
     <footer>
         <p>&copy; 2024 Kasper Janssen</p>
     </footer>
 </div>
 <script src="../JS/Template.js"></script>
+<script src="../JS/OverviewPages.js"></script>
+<script> fetchGeneral({category: "1"})</script>
 </body>
 </html>
