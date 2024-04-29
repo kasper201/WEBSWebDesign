@@ -5,6 +5,12 @@
     max-width: 100%;
 }
 
+.onSale {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
 .product {
     display: flex;
     flex-direction: column;

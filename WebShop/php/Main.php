@@ -3,7 +3,7 @@ include 'getMysqli.php';
 
 $mysqli = getMysqli();
 
-$query = "SELECT * FROM Product WHERE OnSale = 1";
+$query = "select * from Product where OnSale = 1;";
 error_log("Executing query: " . $query);
 
 $result = $mysqli->query($query);
@@ -22,6 +22,15 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         array_push($products, $row);
     }
+}
+
+foreach ($products as $key => $product) {
+    if (!isset($product['image']) || !isset($product['thumbnail'])) {
+        error_log("Image or thumbnail not set for product: " . print_r($product, true));
+        continue;
+    }
+    $products[$key]['image'] = base64_encode($product['image']);
+    $products[$key]['thumbnail'] = base64_encode($product['thumbnail']);
 }
 
 // Return products information as JSON

@@ -14,11 +14,11 @@ xhttp.onreadystatechange = function() {
                 productDiv.className = 'product';
 
                 let productLink = document.createElement('a');
-                productLink.href = `../php/Product.php?id=${product.id}`;
+                productLink.href = `../php/Product.php?id=${product.ID}`;
 
                 let productImage = document.createElement('img');
-                productImage.src = product.image; // Set the src to the image path fetched from the database
-                productImage.alt = product.name;
+                productImage.src = 'data:image/jpeg;base64,' + product.thumbnail; // set the image
+                productImage.alt = product.Name;
                 productImage.className = 'productImage';
                 productImage.onerror = function() {
                     this.onerror = null; // To prevent infinite loop in case the placeholder image doesn't exist
@@ -26,10 +26,10 @@ xhttp.onreadystatechange = function() {
                 };
 
                 let productName = document.createElement('h3');
-                productName.textContent = product.name;
+                productName.textContent = product.Name;
 
                 let productPrice = document.createElement('p');
-                productPrice.textContent = `Price: €${product.price}`;
+                productPrice.textContent = `Price: €${product.Price}`;
 
                 productLink.appendChild(productImage);
                 productLink.appendChild(productName);
@@ -38,6 +38,7 @@ xhttp.onreadystatechange = function() {
                 productDiv.appendChild(productLink);
 
                 productsContainer.appendChild(productDiv);
+                console.log(productsContainer.outerHTML);
             });
         } else {
             console.log("Empty response received");
