@@ -16,8 +16,7 @@ error_log("Query: " . $query);
 
 $products = getArr($query, $mysqli);
 
-$json = json_encode($products);
-error_log("JSON string: " . $json);
+error_log("Products: " . print_r($products, true));
 
 foreach ($products as $key => $product) {
     if (!isset($product['image']) || !isset($product['thumbnail'])) {
@@ -25,10 +24,9 @@ foreach ($products as $key => $product) {
         continue;
     }
     $products[$key]['image'] = base64_encode($product['image']);
+    $products[$key]['thumbnail'] = base64_encode($product['thumbnail']); // encode the image and thumbnail as base64
 }
 
-$json = json_encode($products);
-error_log("JSON string: " . $json);
 // Return products information as JSON
 header('Content-Type: application/json');
 echo json_encode($products);

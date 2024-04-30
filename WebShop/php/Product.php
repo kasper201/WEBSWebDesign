@@ -39,7 +39,18 @@
     </div>
     <div class="content">
         <div class="product">
-
+            <!--<div class="productImage">
+                <img src="../Images/ohno.png" alt="Product Image" class="product-image">
+            </div>
+            <div class="product-info">
+                <h1 class="product-name">
+                    Kaas
+                </h1>
+                <p class="product-price"></p>
+                <p class="selectAmount">Select Amount: <input type="number" class="amount" value="1" min="1"></p>
+                <button class="addToBasket">Add to Basket</button>
+                <p class="product-description"></p>
+            </div>-->
         </div>
     </div>
     <footer>

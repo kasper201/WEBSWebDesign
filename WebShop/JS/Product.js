@@ -9,34 +9,49 @@ xhttp.onreadystatechange = function () {
             // log to console for debugging
             console.log(products);
 
-            let productDiv = document.createElement('div');
-            productDiv.className = 'product';
+            products.forEach(product => {
+                let productDiv = document.createElement('div');
+                productDiv.className = 'product';
 
-            let productLink = document.createElement('a');
-            productLink.href = `../php/Product.php?id=${product.ID}`;
+                let imageContainer = document.createElement('div');
+                imageContainer.className = 'productImage';
 
-            let productImage = document.createElement('img');
-            productImage.src = 'data:image/jpeg;base64,' + product.thumbnail; // set the image
-            productImage.alt = product.Name;
-            productImage.className = 'productImage';
-            productImage.onerror = function () {
-                this.onerror = null; // To prevent infinite loop in case the placeholder image doesn't exist
-                this.src = '../Images/Basket.png'; // Replace with your placeholder image path
-            };
+                let productImage = document.createElement('img');
+                productImage.src = 'data:image/jpeg;base64,' + product.thumbnail; // set the image
+                productImage.alt = product.Name;
+                productImage.onerror = function () {
+                    this.onerror = null; // To prevent infinite loop in case the placeholder image doesn't exist
+                    this.src = '../Images/Basket.png'; // Replace with your placeholder image path
+                };
 
-            let productName = document.createElement('h3');
-            productName.textContent = product.Name;
+                imageContainer.appendChild(productImage);
 
-            let productPrice = document.createElement('p');
-            productPrice.textContent = `Price: €${product.Price}`;
+                let productName = document.createElement('div');
+                productName.className = 'name';
+                productName.textContent = product.Name;
 
-            productLink.appendChild(productImage);
-            productLink.appendChild(productName);
-            productLink.appendChild(productPrice);
+                let productDescription = document.createElement('div');
+                productDescription.className = 'description';
+                productDescription.textContent = product.Description;
 
-            productDiv.appendChild(productLink);
+                // price container (static)
+                let priceContainer = document.createElement('div');
+                priceContainer.className = 'priceContainer';
 
-            productsContainer.appendChild(productDiv);
+                let productPrice = document.createElement('div');
+                productPrice.className = 'price';
+                productPrice.textContent = `€${product.Price}`;
+
+                priceContainer.appendChild(productPrice);
+
+                productDiv.appendChild(imageContainer);
+                productDiv.appendChild(productName);
+                productDiv.appendChild(productDescription);
+                productDiv.appendChild(priceContainer);
+
+                productsContainer.appendChild(productDiv);
+            });
+
             console.log(productsContainer.outerHTML);
         } else {
             console.log("Empty response received");

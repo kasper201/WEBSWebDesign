@@ -1,2 +1,40 @@
-.product {
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.productImage {
+    width: 70vw;
+    max-height: 85vh;
+}
+
+.productImage img {
+    width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+}
+
+.name {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.priceContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 27vw;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background: #006ba4;
+}
+
+.price {
+    margin-left: 0.5vw;
+    font-size: 2em;
+    font-weight: bold;
 }

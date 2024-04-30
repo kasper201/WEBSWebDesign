@@ -24,7 +24,9 @@ function getArr($query, mysqli $mysqli)
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             array_push($products, $row);
+            error_log("Row: " . print_r($row, true));
         }
     }
+
     return $products;
 }
