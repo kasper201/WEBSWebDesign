@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin: 0.8vw;
 }
 .productImage {
     width: 70vw;
@@ -16,15 +16,26 @@
 }
 
 .name {
+    width: 70vw;
     font-size: 2em;
     font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.description {
+    width: 70vw;
+    padding: 5px;
+    background: #38414f;
+    border: 1px solid #000000;
+    border-radius: 5px;
 }
 
 .priceContainer {
     position: absolute;
     top: 0;
     right: 0;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
     justify-content: space-between;
     align-items: center;
     width: 27vw;
@@ -36,5 +47,52 @@
 .price {
     margin-left: 0.5vw;
     font-size: 2em;
+    font-weight: bolder;
+}
+
+.actionContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addToCart {
+    margin: 0.5vw;
+    background: #b9002c;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 5px;
+    padding-right: 5vw;
+    padding-left: 5vw;
+    cursor: pointer;
+    font-size: 1.5em;
     font-weight: bold;
+}
+
+.addToCart:hover {
+    background: #de0000;
+}
+
+.quantitySelection {
+    width: 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5vw;
+}
+
+.quantityInput {
+    width: inherit;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    border: none;
+    background: #5f6b7a;
+    border-radius: 25px;
+    border-width: 2px;
+    border-color: #000000;
+    border-style: solid;
+    padding-right: 1vw;
+    padding-left: 1vw;
 }

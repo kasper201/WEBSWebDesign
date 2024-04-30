@@ -42,7 +42,46 @@ xhttp.onreadystatechange = function () {
                 productPrice.className = 'price';
                 productPrice.textContent = `€${product.Price}`;
 
+                // Quantity selection and Add to Cart button container
+                let actionContainer = document.createElement('div');
+                actionContainer.className = 'actionContainer';
+
+                // Quantity selection
+                let quantitySelection = document.createElement('div');
+                quantitySelection.className = 'quantitySelection';
+
+                let quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.className = 'quantityInput';
+
+                quantitySelection.appendChild(quantityInput);
+
+                let addToCartButton = document.createElement('button');
+                addToCartButton.className = 'addToCart';
+                addToCartButton.textContent = 'Add to cart';
+
+                addToCartButton.onclick = function () { // add to cart
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    let productIndex = cart.findIndex(p => p.ProductNr == product.ProductNr);
+                    if (productIndex >= 0) {
+                        cart[productIndex].Quantity += parseInt(quantityInput.value);
+                    } else {
+                        cart.push({
+                            ProductNr: product.ProductNr,
+                            Quantity: parseInt(quantityInput.value)
+                        });
+                    }
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    alert('Added to cart');
+                }
+
+                actionContainer.appendChild(quantitySelection);
+                actionContainer.appendChild(addToCartButton);
+
                 priceContainer.appendChild(productPrice);
+                priceContainer.appendChild(actionContainer);
 
                 productDiv.appendChild(imageContainer);
                 productDiv.appendChild(productName);

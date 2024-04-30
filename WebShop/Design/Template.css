@@ -25,9 +25,14 @@
 
 footer {
     text-align: left;
-    padding: 10px;
+    padding: 5px;
     position: relative;
     width: 100%;
+    background: #28487e;
+}
+
+footer p {
+    margin-left: 5px;
 }
 
 .menu {

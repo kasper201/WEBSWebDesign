@@ -24,7 +24,7 @@
                     <a href="../php/Products.php?category=3">Books</a>
                     <a href="../php/Products.php?category=4">Games</a>
                     <a href="../php/Products.php?category=5">Movies</a>
-                    <a href="../php/Products.php?category=6">People</a>
+                    <a href="../php/Products.php?category=6">Boats</a>
                 </ul>
             </div>
         </div>
