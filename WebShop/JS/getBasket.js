@@ -34,6 +34,10 @@ xhttp.onreadystatechange = function () {
                 productDescription.className = 'description';
                 productDescription.textContent = product.Description.split('. ')[0] + '.'; // only show the first sentence
 
+                let productPrice = document.createElement('div');
+                productPrice.className = 'price';
+                productPrice.textContent = `€${product.Price}`;
+
                 // Quantity selection and Add to Cart button container
                 let actionContainer = document.createElement('div');
                 actionContainer.className = 'actionContainer';
@@ -93,6 +97,7 @@ xhttp.onreadystatechange = function () {
 
                 actionContainer.appendChild(deleteButton);
                 actionContainer.appendChild(quantitySelection);
+                actionContainer.appendChild(productPrice);
 
                 // make the product name a link to the product page
                 let tempDiv = document.createElement('div');
