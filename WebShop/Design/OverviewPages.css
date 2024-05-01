@@ -23,8 +23,8 @@
     background: #28487e;
 }
 
-.product::hover {
-    background: #006ba4;
+.product:hover {
+    background: #187bad;
 }
 
 .product a {
