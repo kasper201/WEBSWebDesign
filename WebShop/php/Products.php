@@ -28,7 +28,7 @@
     // Get the value of id
     var category = urlParams.get('category');
 
-    fetchGeneral({category: category})
+    fetchGeneral({category: category, productNr: "null"});
 </script>
 </body>
 </html>

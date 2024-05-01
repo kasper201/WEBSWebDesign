@@ -4,7 +4,7 @@ xhttp.onreadystatechange = function () {
         if (this.responseText.trim() !== "") {
             let response = JSON.parse(this.responseText);
             let products = Array.isArray(response) ? response : [response]; // make sure that it is actually an array
-            let productsContainer = document.querySelector('.product');
+            let basket = document.querySelector('.basket');
 
             // log to console for debugging
             console.log(products);
@@ -34,14 +34,6 @@ xhttp.onreadystatechange = function () {
                 productDescription.className = 'description';
                 productDescription.textContent = product.Description;
 
-                // price container (static)
-                let priceContainer = document.createElement('div');
-                priceContainer.className = 'priceContainer';
-
-                let productPrice = document.createElement('div');
-                productPrice.className = 'price';
-                productPrice.textContent = `€${product.Price}`;
-
                 // Quantity selection and Add to Cart button container
                 let actionContainer = document.createElement('div');
                 actionContainer.className = 'actionContainer';
@@ -50,9 +42,12 @@ xhttp.onreadystatechange = function () {
                 let quantitySelection = document.createElement('div');
                 quantitySelection.className = 'quantitySelection';
 
+                // make sure that the quantity is a number already selected before
                 let quantityInput = document.createElement('input');
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let productIndex = cart.findIndex(p => p.ProductNr == product.ProductNr);
                 quantityInput.type = 'number';
-                quantityInput.value = 1;
+                quantityInput.value = cart[productIndex].Quantity;
                 quantityInput.min = 1;
                 quantityInput.max = 9999;
                 quantityInput.className = 'quantityInput';
@@ -63,45 +58,46 @@ xhttp.onreadystatechange = function () {
                     } else if (this.value < 1) {
                         this.value = 1;
                     }
-                }
-
-                quantitySelection.appendChild(quantityInput);
-
-                let addToCartButton = document.createElement('button');
-                addToCartButton.className = 'addToCart';
-                addToCartButton.textContent = 'Add to cart';
-
-                addToCartButton.onclick = function () { // add to cart
-                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                    let productIndex = cart.findIndex(p => p.ProductNr == product.ProductNr);
+                    // update the cart in local storage
                     if (productIndex >= 0) {
-                        cart[productIndex].Quantity += parseInt(quantityInput.value);
+                        cart[productIndex].Quantity = parseInt(quantityInput.value);
                     } else {
                         cart.push({
                             ProductNr: product.ProductNr,
-                            ID: parseInt(id),
                             Quantity: parseInt(quantityInput.value)
                         });
                     }
                     localStorage.setItem('cart', JSON.stringify(cart));
-                    alert('Added to cart');
                 }
 
-                actionContainer.appendChild(quantitySelection);
-                actionContainer.appendChild(addToCartButton);
+                quantitySelection.appendChild(quantityInput);
 
-                priceContainer.appendChild(productPrice);
-                priceContainer.appendChild(actionContainer);
+                let deleteButton = document.createElement('button');
+                deleteButton.className = 'deleteFromCart';
+                deleteButton.textContent = 'Delete from cart';
+
+                deleteButton.onclick = function () { // remove from cart
+                    if (productIndex >= 0) {
+                        cart.splice(productIndex, 1);
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        alert('Removed from cart');
+                        // Refresh the page or update the cart display
+                        location.reload();
+                    }
+                }
+
+                actionContainer.appendChild(deleteButton);
+                actionContainer.appendChild(quantitySelection);
 
                 productDiv.appendChild(imageContainer);
                 productDiv.appendChild(productName);
                 productDiv.appendChild(productDescription);
-                productDiv.appendChild(priceContainer);
+                productDiv.appendChild(actionContainer);
 
-                productsContainer.appendChild(productDiv);
+                basket.appendChild(productDiv);
             });
 
-            console.log(productsContainer.outerHTML);
+            console.log(basket.outerHTML);
         } else {
             console.log("Empty response received");
         }
@@ -114,12 +110,16 @@ xhttp.onreadystatechange = function () {
         console.log("State: " + this.readyState);
     }
 };
-// Get the URL parameters
-var urlParams = new URLSearchParams(window.location.search);
 
-// Get the value of id
-var id = urlParams.get('id');
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+let productIds = cart.map(item => item.ID);
+let productIdsString = productIds.join(',');
+
+let productAmount = cart.map(item => item.Quantity);
+
+console.log(productIds);
 
 console.log("Sending request");
-xhttp.open("GET", "../php/getProduct.php?productNr=" + id, true);
+xhttp.open("GET", "../php/convert4Overview.php?productNr=" + productIdsString, true);
 xhttp.send();

@@ -3,6 +3,7 @@ include 'OverviewPages.php';
 // TODO: Implement the function overviewPages
 $category = $_GET['category'];
 $onlySale = $_GET['onSale'];
+$basket = $_GET['productNr'];
 
 //SELECT *
 //FROM Product
@@ -15,7 +16,9 @@ if($onlySale) {
     } else { // if a category is selected also look for the category
         overviewPages("select * from Product JOIN ProductCategory ON Product.ID = ProductCategory.ProductID where OnSale = 1 AND ProductCategory.CategoryID = $category");
     }
-} else{
+} elseif ($basket != "null") {
+    overviewPages("SELECT * FROM Product WHERE ID IN ($basket)");
+} else {
     if ($category == "null") {
         overviewPages("select * from Product");
     } else {

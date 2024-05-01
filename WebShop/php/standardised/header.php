@@ -18,10 +18,10 @@
     </div>
     <button class="GoToContact">Contact</button>
     <button class="GoToAbout">About Us</button>
-    <a href="../Basket.php">
+    <a href="./Basket.php">
         <img src="../Images/Basket.png" alt="Basket" class="BasketImage">
     </a>
-    <a href="../Login.php">
+    <a href="./Login.php">
         <img src="../Images/Login.png" alt="Login" class="LoginImage">
     </a>
 </div>
