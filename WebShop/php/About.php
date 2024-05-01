@@ -27,22 +27,26 @@
                 </ul>
             </div>
         </div>
-        <button class="GoToContact" href="Contact.php">Contact</button>
-        <button class="GoToAbout" href="About.php">About Us</button>
-        <a href="Basket.php">
-            <img src="../Images/Basket.png" alt="Basket" class="BasketImage">
+        <button class="GoToContact">Contact</button>
+        <button class="GoToAbout">About Us</button>
+        <a href="../php/Basket.php">
+            <img src="../Images/Basket.png" alt="cart" class="BasketImage">
         </a>
-        <a href="Login.php">
+        <a href="../php/Login.php">
             <img src="../Images/Login.png" alt="Login" class="LoginImage">
         </a>
     </div>
     <div class="content">
         <h2>Welcome to Kaspers Shop</h2>
-        <p>something should be put here ig.</p>
+        <p>This website is made as a project made by Kasper Janssen. They are a second year student studying Embedded Software/Computer Science in The Netherlands. </p>
+        <h3>Hobbies</h3>
+        <p>In their free time Kasper likes to game, especially Beat Saber. For this game he has also made multiple overlays for tournaments. Furthermore they love playing the bass-guitar, especially in their band called "De Stichting". Here they play mostly Rock/Pop-Rock and are constantly looking for fun gigs! Kasper has also grown up on a boat and loves sailing.</p>
+        <h3>Future</h3>
+        <p>Kasper hopes to finish the study within 4 years and is thinking about doing a masters afterwards. </p>
     </div>
-    <div class="footer">
+    <footer>
         <p>&copy; 2024 Kasper Janssen</p>
-    </div>
+    </footer>
 </div>
 <script src="../JS/Template.js"></script>
 </body>

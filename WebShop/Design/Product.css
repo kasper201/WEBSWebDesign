@@ -54,17 +54,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0.5vw;
 }
 
 .addToCart {
-    margin: 0.5vw;
     background: #b9002c;
     color: white;
     border: none;
     border-radius: 25px;
     padding: 5px;
-    padding-right: 5vw;
-    padding-left: 5vw;
+    width: 70%;
     cursor: pointer;
     font-size: 1.5em;
     font-weight: bold;
@@ -75,11 +74,10 @@
 }
 
 .quantitySelection {
-    width: 5vw;
+    width: 30%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0.5vw;
 }
 
 .quantityInput {
