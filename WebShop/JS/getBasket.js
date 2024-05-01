@@ -32,7 +32,7 @@ xhttp.onreadystatechange = function () {
 
                 let productDescription = document.createElement('div');
                 productDescription.className = 'description';
-                productDescription.textContent = product.Description;
+                productDescription.textContent = product.Description.split('. ')[0] + '.'; // only show the first sentence
 
                 // Quantity selection and Add to Cart button container
                 let actionContainer = document.createElement('div');
@@ -74,7 +74,6 @@ xhttp.onreadystatechange = function () {
 
                 let deleteButton = document.createElement('button');
                 deleteButton.className = 'deleteFromCart';
-                deleteButton.textContent = 'Delete from cart';
 
                 deleteButton.onclick = function () { // remove from cart
                     if (productIndex >= 0) {
@@ -86,15 +85,31 @@ xhttp.onreadystatechange = function () {
                     }
                 }
 
+                let deleteButtonImage = document.createElement('img');
+                deleteButtonImage.src = '../Images/bin.png';
+                deleteButtonImage.alt = 'Delete from cart';
+
+                deleteButton.appendChild(deleteButtonImage);
+
                 actionContainer.appendChild(deleteButton);
                 actionContainer.appendChild(quantitySelection);
 
-                productDiv.appendChild(imageContainer);
-                productDiv.appendChild(productName);
-                productDiv.appendChild(productDescription);
+                // make the product name a link to the product page
+                let tempDiv = document.createElement('div');
+                tempDiv.className = 'tmp';
+
+                let productLink = document.createElement('a');
+                productLink.href = `../php/Product.php?id=${cart[productIndex].ID}`;
+
+                tempDiv.appendChild(imageContainer);
+                tempDiv.appendChild(productName);
+                tempDiv.appendChild(productDescription);
+
+                productDiv.appendChild(tempDiv);
                 productDiv.appendChild(actionContainer);
 
                 basket.appendChild(productDiv);
+
             });
 
             console.log(basket.outerHTML);

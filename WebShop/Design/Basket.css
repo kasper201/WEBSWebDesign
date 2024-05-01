@@ -1,0 +1,104 @@
+.content {
+    display: grid;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    width: 60%;
+    background: #28487e;
+}
+
+.product:hover {
+    background: #187bad;
+}
+
+.tmp {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+
+.productImage img {
+    width: auto;
+    height: 15vh;
+    object-fit: cover;
+    border-radius: 5px;
+    background: #b9002c;
+}
+
+.name {
+    width: 5vw;
+    font-size: 2em;
+    font-weight: bold;
+    padding-left: 0.5vw;
+    padding-bottom: 5px;
+    top: 0;
+}
+
+.description {
+    width: 30vw;
+    font-size: 2em;
+    margin-left: 0.5vw;
+    padding-bottom: 5px;
+}
+
+.actionContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5vw;
+}
+
+.deleteFromCart {
+    flex: 0 0 auto;
+    background: transparent;
+    border-radius: 25px;
+    border-width: 2px;
+    border-color: #000000;
+    border-color: #000000;
+    border-style: hidden;
+    padding-right: 1vw;
+    padding-left: 1vw;
+}
+
+.deleteFromCart:hover {
+    background: #28487e;
+}
+
+.deleteFromCart img {
+    width: 2vw;
+    height: 2vw;
+}
+
+.quantitySelection {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 2vw;
+}
+
+.quantityInput {
+    flex: 0 0 auto;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    border: none;
+    background: #5f6b7a;
+    border-radius: 25px;
+    border-width: 2px;
+    border-color: #000000;
+    border-style: solid;
+    padding-right: 1vw;
+    padding-left: 1vw;
+}
