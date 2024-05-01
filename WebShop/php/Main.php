@@ -12,23 +12,24 @@
 <div class="main">
     <?php include './standardised/header.php'; ?>
     <div class="content">
+        <h2>Welcome to Kaspers Shop</h2>
         <div class="items">
-
+            <!-- this is an example of how the structure of the product should be -->
+            <!--<div class="product">
+                <a href="../php/Product.css">
+                    <img src="../Images/LogoColour.png" alt="Logo" class="productImage">
+                    <h3>Product</h3>
+                    <p>Price: €0.00</p>
+                </a>
+            </div>-->
         </div>
-
     </div>
     <?php include './standardised/footer.php'; ?>
 </div>
 <script src="../JS/Template.js"></script>
 <script src="../JS/OverviewPages.js"></script>
 <script>
-    // Get the URL parameters
-    var urlParams = new URLSearchParams(window.location.search);
-
-    // Get the value of id
-    var category = urlParams.get('category');
-
-    fetchGeneral({category: category})
+    fetchGeneral({onSale: "true", category: null});
 </script>
 </body>
 </html>

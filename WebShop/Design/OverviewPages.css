@@ -6,7 +6,7 @@
 }
 
 .items {
-    margin-top: 25px;
+    margin-top: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -21,6 +21,10 @@
     border-radius: 5px;
     width: 200px;
     background: #28487e;
+}
+
+.product::hover {
+    background: #006ba4;
 }
 
 .product a {
