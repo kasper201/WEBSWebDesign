@@ -54,7 +54,16 @@ xhttp.onreadystatechange = function () {
                 quantityInput.type = 'number';
                 quantityInput.value = 1;
                 quantityInput.min = 1;
+                quantityInput.max = 9999;
                 quantityInput.className = 'quantityInput';
+
+                quantityInput.oninput = function() {
+                    if (this.value > 9999) {
+                        this.value = 9999;
+                    } else if (this.value < 1) {
+                        this.value = 1;
+                    }
+                }
 
                 quantitySelection.appendChild(quantityInput);
 

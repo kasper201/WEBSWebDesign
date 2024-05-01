@@ -58,6 +58,7 @@
 }
 
 .addToCart {
+    flex: 0 0 auto;
     background: #b9002c;
     color: white;
     border: none;
@@ -74,14 +75,15 @@
 }
 
 .quantitySelection {
-    width: 30%;
+    width: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .quantityInput {
-    width: inherit;
+    flex: 0 0 auto;
+    width: 100%;
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
