@@ -19,12 +19,12 @@
             <div class="submenu-container">
                 <ul class="submenu">
                     <a href="../php/Products.php">All</a>
-                    <a href="../php/Products.php?category=1">Electronics</a>
-                    <a href="../php/Products.php?category=2">Clothing</a>
-                    <a href="../php/Products.php?category=3">Books</a>
-                    <a href="../php/Products.php?category=4">Games</a>
-                    <a href="../php/Products.php?category=5">Movies</a>
-                    <a href="../php/Products.php?category=6">Boats</a>
+                    <a href="../php/Products.php?category=0">Electronics</a>
+                    <a href="../php/Products.php?category=1">Clothing</a>
+                    <a href="../php/Products.php?category=2">Books</a>
+                    <a href="../php/Products.php?category=3">Games</a>
+                    <a href="../php/Products.php?category=4">Movies</a>
+                    <a href="../php/Products.php?category=5">Boats</a>
                 </ul>
             </div>
         </div>
@@ -50,7 +50,13 @@
 <script src="../JS/Template.js"></script>
 <script src="../JS/OverviewPages.js"></script>
 <script>
-    fetchGeneral({category: "1"})
+    // Get the URL parameters
+    var urlParams = new URLSearchParams(window.location.search);
+
+    // Get the value of id
+    var category = urlParams.get('category');
+
+    fetchGeneral({category: category})
 </script>
 </body>
 </html>
