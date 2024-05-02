@@ -9,9 +9,22 @@ xhttp.onreadystatechange = function () {
             let products = Array.isArray(response) ? response : [response]; // make sure that it is actually an array
             let basket = document.querySelector('.basket');
 
+            // create bottom container for the total price and go to checkout button
+            let bottomContainer = document.createElement('div');
+            bottomContainer.className = 'bottomContainer';
+
             // Total price of the products
             let totalProductPrice = document.createElement('div');
             totalProductPrice.className = 'productPrice';
+
+            let goToCheckout = document.createElement('button');
+            goToCheckout.className = 'goToCheckout';
+            goToCheckout.textContent = 'TO CHECKOUT';
+
+            goToCheckout.onclick = function () { // add to cart
+
+                alert("JK YOU CAN'T");
+            }
 
             // log to console for debugging
             console.log(products);
@@ -153,7 +166,9 @@ xhttp.onreadystatechange = function () {
             // Set the total price after all products have been processed
             totalProductPrice.textContent = `Total: €${parseFloat((totalPrice).toFixed(2))}`;
 
-            basket.appendChild(totalProductPrice);
+            bottomContainer.appendChild(goToCheckout);
+            bottomContainer.appendChild(totalProductPrice);
+            basket.appendChild(bottomContainer);
 
             console.log(basket.outerHTML);
         } else {
@@ -181,6 +196,3 @@ console.log(productIds);
 console.log("Sending request");
 xhttp.open("GET", "../php/convert4Overview.php?productNr=" + productIdsString, true);
 xhttp.send();
-
-// TODO: Add a button to go to the checkout page and a button to clear the cart
-// TODO: Add a total price display
