@@ -24,7 +24,7 @@
 .tmp {
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 100%;
 }
 
 .productImage img {
@@ -34,8 +34,14 @@
     border-radius: 5px;
 }
 
+.product a {
+    text-decoration: none;
+    color: white;
+}
+
 .name {
-    width: 5vw;
+    order:1;
+    width: 6vw;
     font-size: 2em;
     font-weight: bold;
     padding-left: 0.5vw;
@@ -44,6 +50,7 @@
 }
 
 .description {
+    order:2;
     width: 30vw;
     font-size: 2em;
     margin-left: 0.5vw;

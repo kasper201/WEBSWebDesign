@@ -73,7 +73,7 @@ xhttp.onreadystatechange = function () {
 
                 addToCartButton.onclick = function () { // add to cart
                     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                    let productIndex = cart.findIndex(p => p.ProductNr == product.ProductNr);
+                    let productIndex = cart.findIndex(p => p.ID == product.ID);
                     if (productIndex >= 0) {
                         cart[productIndex].Quantity += parseInt(quantityInput.value);
                     } else {

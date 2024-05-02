@@ -9,13 +9,17 @@ xhttp.onreadystatechange = function () {
             let products = Array.isArray(response) ? response : [response]; // make sure that it is actually an array
             let basket = document.querySelector('.basket');
 
+            // Total price of the products
+            let totalProductPrice = document.createElement('div');
+            totalProductPrice.className = 'productPrice';
+
             // log to console for debugging
             console.log(products);
 
             products.forEach(product => {
                 // define cart
                 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                let productIndex = cart.findIndex(p => p.ProductNr == product.ProductNr);
+                let productIndex = cart.findIndex(p => p.ID == product.ID);
 
                 // create the product div
                 let productDiv = document.createElement('div');
@@ -65,11 +69,7 @@ xhttp.onreadystatechange = function () {
                 quantityInput.max = 9999;
                 quantityInput.className = 'quantityInput';
 
-                // Total price of the products
-                let totalProductPrice = document.createElement('div');
-                totalProductPrice.className = 'productPrice';
-                totalProductPrice.textContent = `Total: €${parseFloat((totalPrice).toFixed(2))}`;
-
+                // TODO: fix that one product doesn't affect the other products
                 quantityInput.oninput = function() {
                     if (this.value > 9999) {
                         this.value = 9999;
@@ -81,7 +81,7 @@ xhttp.onreadystatechange = function () {
                         cart[productIndex].Quantity = parseInt(quantityInput.value);
                     } else {
                         cart.push({
-                            ProductNr: product.ProductNr,
+                            ID: product.ID,
                             Quantity: parseInt(quantityInput.value)
                         });
                     }
@@ -123,24 +123,37 @@ xhttp.onreadystatechange = function () {
                 actionContainer.appendChild(quantitySelection);
                 actionContainer.appendChild(productPrice);
 
-                // make the product name a link to the product page
-                let tempDiv = document.createElement('div');
-                tempDiv.className = 'tmp';
-
+                // make the entire tmp div a link to the product page
                 let productLink = document.createElement('a');
                 productLink.href = `../php/Product.php?id=${cart[productIndex].ID}`;
 
-                tempDiv.appendChild(imageContainer);
-                tempDiv.appendChild(productName);
-                tempDiv.appendChild(productDescription);
+                let tempDiv = document.createElement('div');
+                tempDiv.className = 'tmp';
 
-                productDiv.appendChild(tempDiv);
+                // Append the image, name, and description to the temp div
+                let imageLink = imageContainer.cloneNode(true); // clone the imageContainer
+                tempDiv.appendChild(imageLink);
+
+                let nameLink = productName.cloneNode(true); // clone the productName
+                tempDiv.appendChild(nameLink);
+
+                let descriptionLink = productDescription.cloneNode(true); // clone the productDescription
+                tempDiv.appendChild(descriptionLink);
+
+                // Append the temp div to the product link
+                productLink.appendChild(tempDiv);
+
+                productDiv.appendChild(productLink);
                 productDiv.appendChild(actionContainer);
 
                 basket.appendChild(productDiv);
-                basket.appendChild(totalProductPrice);
 
             });
+
+            // Set the total price after all products have been processed
+            totalProductPrice.textContent = `Total: €${parseFloat((totalPrice).toFixed(2))}`;
+
+            basket.appendChild(totalProductPrice);
 
             console.log(basket.outerHTML);
         } else {
