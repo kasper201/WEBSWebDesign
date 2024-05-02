@@ -1,6 +1,5 @@
 <?php
 include 'OverviewPages.php';
-// TODO: Implement the function overviewPages
 $category = $_GET['category'];
 $onlySale = $_GET['onSale'];
 $basket = $_GET['productNr'];

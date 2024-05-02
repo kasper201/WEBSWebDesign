@@ -1,3 +1,6 @@
+let totalPrice = 0; // Total price for all items in the cart
+
+// Get the products from the server
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -10,6 +13,11 @@ xhttp.onreadystatechange = function () {
             console.log(products);
 
             products.forEach(product => {
+                // define cart
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let productIndex = cart.findIndex(p => p.ProductNr == product.ProductNr);
+
+                // create the product div
                 let productDiv = document.createElement('div');
                 productDiv.className = 'product';
 
@@ -36,7 +44,10 @@ xhttp.onreadystatechange = function () {
 
                 let productPrice = document.createElement('div');
                 productPrice.className = 'price';
-                productPrice.textContent = `€${product.Price}`;
+                productPrice.textContent = `€${parseFloat((product.Price * cart[productIndex].Quantity).toFixed(2))}`;
+
+                // Add the price to the total price
+                totalPrice += product.Price * cart[productIndex].Quantity;
 
                 // Quantity selection and Add to Cart button container
                 let actionContainer = document.createElement('div');
@@ -48,13 +59,16 @@ xhttp.onreadystatechange = function () {
 
                 // make sure that the quantity is a number already selected before
                 let quantityInput = document.createElement('input');
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                let productIndex = cart.findIndex(p => p.ProductNr == product.ProductNr);
                 quantityInput.type = 'number';
                 quantityInput.value = cart[productIndex].Quantity;
                 quantityInput.min = 1;
                 quantityInput.max = 9999;
                 quantityInput.className = 'quantityInput';
+
+                // Total price of the products
+                let totalProductPrice = document.createElement('div');
+                totalProductPrice.className = 'productPrice';
+                totalProductPrice.textContent = `Total: €${parseFloat((totalPrice).toFixed(2))}`;
 
                 quantityInput.oninput = function() {
                     if (this.value > 9999) {
@@ -72,6 +86,16 @@ xhttp.onreadystatechange = function () {
                         });
                     }
                     localStorage.setItem('cart', JSON.stringify(cart));
+                    // update the total price of the product and the total price of the cart
+                    productPrice.textContent = `€${parseFloat((product.Price * cart[productIndex].Quantity).toFixed(2))}`;
+
+                    // recalculate the total price of the cart
+                    totalPrice = 0;
+                    for (let i = 0; i < cart.length; i++) {
+                        totalPrice += products[i].Price * cart[i].Quantity;
+                    }
+
+                    totalProductPrice.textContent = `Total: €${parseFloat((totalPrice).toFixed(2))}`;
                 }
 
                 quantitySelection.appendChild(quantityInput);
@@ -114,6 +138,7 @@ xhttp.onreadystatechange = function () {
                 productDiv.appendChild(actionContainer);
 
                 basket.appendChild(productDiv);
+                basket.appendChild(totalProductPrice);
 
             });
 
@@ -143,3 +168,6 @@ console.log(productIds);
 console.log("Sending request");
 xhttp.open("GET", "../php/convert4Overview.php?productNr=" + productIdsString, true);
 xhttp.send();
+
+// TODO: Add a button to go to the checkout page and a button to clear the cart
+// TODO: Add a total price display
