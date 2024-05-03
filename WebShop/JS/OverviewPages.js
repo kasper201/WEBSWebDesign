@@ -19,12 +19,14 @@ function fetchGeneral(params)
                     productLink.href = `../php/Product.php?id=${product.ID}`;
 
                     let productImage = document.createElement('img');
-                    productImage.src = 'data:image/jpeg;base64,' + product.thumbnail; // set the image
+                    productImage.src = product.thumbnail; // set the image
                     productImage.alt = product.Name;
                     productImage.className = 'productImage';
-                    productImage.onerror = function () {
+                    productImage.onerror = function (event) {
+                        console.log("Error loading image: ", event);
+                        console.log("Failed to load image with src: ", this.src);
                         this.onerror = null; // To prevent infinite loop in case the placeholder image doesn't exist
-                        this.src = '../Images/Basket.png'; // Replace with your placeholder image path
+                        this.src = '../Images/Basket.png';
                     };
 
                     let productName = document.createElement('h3');

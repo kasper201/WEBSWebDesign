@@ -17,11 +17,11 @@ xhttp.onreadystatechange = function () {
                 imageContainer.className = 'productImage';
 
                 let productImage = document.createElement('img');
-                productImage.src = 'data:image/jpeg;base64,' + product.image; // set the image
+                productImage.src = product.image; // set the image
                 productImage.alt = product.Name;
                 productImage.onerror = function () {
                     this.onerror = null; // To prevent infinite loop in case the placeholder image doesn't exist
-                    this.src = '../Images/Basket.png'; // Replace with your placeholder image path
+                    this.src = '../Images/ohno.png';
                 };
 
                 imageContainer.appendChild(productImage);
