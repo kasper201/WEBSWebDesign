@@ -40,13 +40,13 @@ $thumbnail = imagecreatetruecolor($thumbnailWidth, $thumbnailHeight);
 imagecopyresampled($thumbnail, $originalImage, 0, 0, 0, 0, $thumbnailWidth, $thumbnailHeight, $originalWidth, $originalHeight);
 
 // Save the thumbnail as a JPEG when debugging
-imagejpeg($thumbnail, "tmp.jpg");
+//imagejpeg($thumbnail, "tmp.jpg");
 
 // now save everything to the database
-include '../getMysqli.php';
+include './getAdminMysqli.php';
 include '../getArr.php';
 
-$mysqli = getMysqli();
+$mysqli = getAdminMysqli();
 
 $result = getArr('SELECT MAX(ID) FROM Product', $mysqli);
 $maxId = $result[0];
@@ -59,7 +59,7 @@ if ($stmt === false) {
 }
 
 // Bind the variables to the prepared statement
-$bind = mysqli_stmt_bind_param($stmt, 'sdsbss', $ID,$name, $price, $description, $OnSale, $image, $thumbnail);
+$bind = mysqli_stmt_bind_param($stmt, 'dsdsdbb', $id,$name, $price, $description, $onSale, $image, $thumbnail);
 if ($bind === false) {
     die('bind_param() failed: ' . htmlspecialchars($stmt->error));
 }
