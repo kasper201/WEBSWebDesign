@@ -20,6 +20,8 @@ function getMysqli()
     $password = 'password';
     $database = $_SESSION['db_database'];
 
+    error_log("username: " . $username);
+
 // Create a new database connection
     $mysqli = new mysqli($host, $username, $password, $database, $port);
 

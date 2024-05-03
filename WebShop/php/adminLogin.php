@@ -2,6 +2,19 @@
 // Start the session
 session_start();
 
+include 'getMysqli.php';
+
+$mysqli = getMysqli();
+// Check if $mysqli is set and if it's a valid mysqli object
+if (isset($mysqli) && $mysqli instanceof mysqli) {
+    // Kill the current connection
+    $mysqli->kill($mysqli->thread_id);
+    // Close the current connection
+    $mysqli->close();
+    // Unset the $mysqli object
+    unset($mysqli);
+}
+
 // Retrieve the username and password from the POST request
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -16,16 +29,6 @@ $_SESSION['db_port'] = $port;
 $_SESSION['db_username'] = $username;
 $_SESSION['db_password'] = $password;
 $_SESSION['db_database'] = $database;
-
-// Check if $mysqli is set and if it's a valid mysqli object
-if (isset($mysqli) && $mysqli instanceof mysqli) {
-    // Kill the current connection
-    $mysqli->kill($mysqli->thread_id);
-    // Close the current connection
-    $mysqli->close();
-    // Unset the $mysqli object
-    unset($mysqli);
-}
 
 try {
     // Create a new database connection
