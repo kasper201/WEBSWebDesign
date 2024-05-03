@@ -39,10 +39,7 @@ $thumbnail = imagecreatetruecolor($thumbnailWidth, $thumbnailHeight);
 // Copy and resize the original image to the new image
 imagecopyresampled($thumbnail, $originalImage, 0, 0, 0, 0, $thumbnailWidth, $thumbnailHeight, $originalWidth, $originalHeight);
 
-// Save the thumbnail as a JPEG when debugging
-//imagejpeg($thumbnail, "tmp.jpg");
-
-// now save everything to the database
+// get ID for saving the image
 include './getAdminMysqli.php';
 include '../getArr.php';
 
@@ -52,14 +49,32 @@ $result = getArr('SELECT MAX(ID) FROM Product', $mysqli);
 $maxId = $result[0];
 $id = $maxId['MAX(ID)'] + 1;
 
+// Save the thumbnail to a temporary file
+$tempFile = '/home/flits/databaseTMP/' . "thumbnail$id.jpg";
+imagejpeg($thumbnail, $tempFile);
+
 // add the product to the database
 $stmt = mysqli_prepare($mysqli, "INSERT INTO Product (ID, Name, Price, Description, OnSale, image, thumbnail) VALUES (?, ?, ?, ?, ?, ?, ?)");
 if ($stmt === false) {
     die('prepare() failed: ' . htmlspecialchars($mysqli->error));
 }
 
+// Read the file content from the temporary path
+$imageContent = file_get_contents($image);
+$thumbnailContent = file_get_contents($tempFile);
+
+// Escape special characters in the string for use in the SQL statement
+//$escapedImageContent = mysqli_real_escape_string($mysqli, $imageContent);
+//$escapedThumbnailContent = mysqli_real_escape_string($mysqli, $thumbnailContent);
+
+// Read the file content from the temporary path
+$imageContent = addslashes(file_get_contents($image));
+$thumbnailContent = addslashes(file_get_contents($tempFile));
+
+error_log($imageContent);
+
 // Bind the variables to the prepared statement
-$bind = mysqli_stmt_bind_param($stmt, 'dsdsdbb', $id,$name, $price, $description, $onSale, $image, $thumbnail);
+$bind = mysqli_stmt_bind_param($stmt, 'dssdsss', $id, $name, $price, $description, $onSale, $imageContent, $thumbnailContent);
 if ($bind === false) {
     die('bind_param() failed: ' . htmlspecialchars($stmt->error));
 }
