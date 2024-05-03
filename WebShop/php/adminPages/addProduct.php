@@ -82,3 +82,5 @@ if ($exec === false) {
 
 // Close the statement
 mysqli_stmt_close($stmt);
+
+header('Location: ../adminPages/Products.php');

@@ -63,3 +63,5 @@ function fetchGeneral(params)
     xhttp.open("GET", "../php/convert4Overview.php?" + queryString, true);
     xhttp.send();
 }
+
+// TODO: Make sort by price
