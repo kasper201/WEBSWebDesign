@@ -11,6 +11,7 @@
 <body>
 <div class="main">
     <div class="content">
+        <button class="BackButton" onclick="window.location.href='../Main.php'">home</button>
         <h1>Admin</h1>
         <div class="admin">
             <a href="./Products.php">

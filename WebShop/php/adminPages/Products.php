@@ -11,6 +11,7 @@
 <body>
 <div class="main">
     <div class="content">
+        <button class="BackButton" onclick="window.location.href='admin.php'">Back</button>
         <h1>Add Products</h1>
         <div class="admin">
             <form action="../../php/adminPages/addProduct.php" method="post" enctype="multipart/form-data">
