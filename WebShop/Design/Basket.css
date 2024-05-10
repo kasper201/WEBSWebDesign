@@ -41,12 +41,13 @@
 
 .name {
     order:1;
-    width: 6vw;
+    width: 7vw;
     font-size: 2em;
     font-weight: bold;
     padding-left: 0.5vw;
     padding-bottom: 5px;
     top: 0;
+    word-wrap: break-word;
 }
 
 .description {

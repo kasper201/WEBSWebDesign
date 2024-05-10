@@ -30,6 +30,7 @@
 .product a {
     text-decoration: none;
     color: white;
+    word-wrap: break-word;
 }
 
 .productImage {

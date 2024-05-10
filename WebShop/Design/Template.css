@@ -44,6 +44,7 @@ footer p {
     text-align: center;
     font-weight: 400;
     font-size-adjust: 0.9;
+    list-item-type: none;
 }
 
 .menu button {
@@ -89,6 +90,16 @@ footer p {
     transform: translateY(-10px);
 }
 
+.sub-menu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
+
+.menu-item:hover > .sub-menu {
+    display: block;
+}
 .GoToProducts {
     cursor: pointer;
     padding: 30px;

@@ -30,6 +30,24 @@
                     <option value="4">Movies</option>
                     <option value="5">Boats</option>
                 </select><br>
+                <label for="subcategory">Subcategory:</label><br>
+                <select id="subcategory" name="subcategory" required>
+                    <option value="0">Phones</option>
+                    <option value="1">Laptops</option>
+                    <option value="2">Tablets</option>
+                    <option value="3">T-Shirts</option>
+                    <option value="4">Pants</option>
+                    <option value="5">Hoodies</option>
+                    <option value="6">Fantasy</option>
+                    <option value="7">Sci-Fi</option>
+                    <option value="8">Horror</option>
+                    <option value="9">Action</option>
+                    <option value="10">Comedy</option>
+                    <option value="11">Thriller</option>
+                    <option value="12">Fishing</option>
+                    <option value="13">Sailing</option>
+                    <option value="14">Speedboats</option>
+                </select><br>
                 <label for="onSale">On Sale:</label><br>
                 <input type="checkbox" id="onSale" name="onSale"><br>
                 <label for="image">Image:</label><br>
@@ -41,4 +59,4 @@
 <script src="../../JS/Template.js"></script>
 </body>
 </html>
-<!-- one WILL get errors however they won't affect the functionality of the webpage -->
+<!-- TODO: make categories and subcategories dynamic -->
