@@ -26,8 +26,14 @@ footer {
     text-align: left;
     padding: 5px;
     position: relative;
-    width: 99%;
     background: #28487e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .adminButton {
+    margin-right: 5px;
 }
 
 footer p {
@@ -92,6 +98,33 @@ footer p {
 .GoToProducts {
     cursor: pointer;
     padding: 30px;
+}
+
+.SearchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background: rgba(153, 179, 211, 0.5);
+    border-radius: 25px;
+    border-width: 2px;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.menu input[type=text] {
+    transition: width 0.4s ease-in-out;
+    font-size: 150%;
+}
+
+.menu input[type=text]:focus {
+    width: 20vw;
+    height: 2vw;
+}
+
+.menu input:not(focus) {
+    width: 10vw;
+    height: 2vw;
 }
 
 .menu button{

@@ -9,7 +9,7 @@ class MenuGenerator {
         $this->mysqli = $mysqli;
     }
 
-    private function getCategories() {
+    public function getCategories() {
         $sql = "SELECT * FROM Category";
         $arr = getArr($sql, $this->mysqli);
         return $arr;
@@ -19,12 +19,6 @@ class MenuGenerator {
         $sql = "SELECT * FROM Category WHERE CategoryID " . ($ID ? "= " . $ID : "IS NULL OR CategoryID = 0");
         $arr = getArr($sql, $this->mysqli);
         return $arr;
-    }
-
-    private function getParent($ID) {
-        $sql = "SELECT * FROM Category WHERE ID = $ID";
-        $arr = getArr($sql, $this->mysqli);
-        return $arr[0]["CategoryID"];
     }
 
     public function generateMenu() {

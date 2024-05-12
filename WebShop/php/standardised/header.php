@@ -2,6 +2,7 @@
     <a href="./Main.php">
         <img src="../Images/Logo.png" alt="Logo" class="logo" onclick="">
     </a>
+    <input type="text" class="SearchBar" onfocus="this.value=''" placeholder="Search..">
     <div class="Products">
         <span class="GoToProducts"><a href="./Products.php" >Products</a></span>
         <div class="submenu">
