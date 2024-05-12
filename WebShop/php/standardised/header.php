@@ -4,13 +4,14 @@
     </a>
     <div class="Products">
         <span class="GoToProducts"><a href="./Products.php" >Products</a></span>
-        <div class="submenu-container">
+        <div class="submenu">
             <?php
             include 'getMysqli.php';
-            include 'generateMenu.php';
+            include 'getCategories.php';
 
             $mysqli = getMysqli();
-            generateMenu(null, $mysqli);
+            $menuGenerator = new MenuGenerator($mysqli);
+            $menuGenerator->generateMenu();
             ?>
         </div>
     </div>

@@ -42,3 +42,14 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "../php/About.php";
     });
 });
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    fetch('http://localhost/WebShop/php/generateMenu(class).php')
+        .then(response => response.text())
+        .then(data => {
+            const menuContainer = document.querySelector('#menuContainer');
+            if (menuContainer) {
+                menuContainer.innerHTML = data;
+            }
+        });
+});
