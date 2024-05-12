@@ -13,9 +13,9 @@
     <?php include './standardised/header.php'; ?>
     <div class="content">
         <h1>Login</h1>
-        <form action="./adminLogin.php" method="post">
+        <form action="./processLogin.php" method="post">
             <label>
-                <input type="text" name="username" placeholder="Username" required="required" />
+                <input type="text" name="username/Email" placeholder="Username" required="required" />
             </label>
             <label>
                 <input type="password" name="password" placeholder="Password" required="required" />
