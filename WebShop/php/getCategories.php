@@ -35,16 +35,17 @@ class MenuGenerator {
                 continue;
             }
             echo "<a href='./Products.php?category=" . $category['ID'] . "'>" . $category['Name'] . "</a>";
-        }
-
-        // Get and display the rest of the categories
-        $allIDs = $this->getCategories();
-        $addedSubmenus = array(); // Array to keep track of added submenus
-        foreach ($allIDs as $category) {
-            if ($category['CategoryID'] !== NULL && !isset($addedSubmenus[$category['ID']])) {
-                echo "<a href='./Products.php?category=" . $category['ID'] . "'>" . $category['Name'] . "</a>";
-                $addedSubmenus[$category['ID']] = true; // Mark submenu as added
+            echo "<div class='submenu'>";
+            // Get and display the rest of the categories
+            $allIDs = $this->getCategories();
+            $addedSubmenus = array(); // Array to keep track of added submenus
+            foreach ($allIDs as $subCategory) {
+                if ($subCategory['CategoryID'] === $category["ID"] && !isset($addedSubmenus[$category['ID']])) {
+                    echo "<a href='./Products.php?category=" . $subCategory['ID'] . "'>" . $subCategory['Name'] . "</a>";
+                    $addedSubmenus[$subCategory['ID']] = true; // Mark submenu as added
+                }
             }
+            echo "</div>";
         }
     }
 }

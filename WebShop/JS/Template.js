@@ -1,23 +1,26 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Get submenu and parent menu item
-    var submenu = document.querySelector('.submenu');
-    var parentMenuItem = document.querySelector('.GoToProducts');
+    // Get all submenu and parent menu item
+    var submenus = document.querySelectorAll('.submenu');
+    var parentMenuItems = document.querySelectorAll('.GoToProducts');
 
     // Show submenu when hovering over parent menu item
-    parentMenuItem.addEventListener('mouseenter', function() {
-        submenu.classList.add('open');
-    });
+    parentMenuItems.forEach(function(parentMenuItem, index) {
+        var submenu = submenus[index];
+        parentMenuItem.addEventListener('mouseenter', function() {
+            submenu.classList.add('open');
+        });
 
-    // Hide submenu when mouse leaves submenu or parent menu item
-    submenu.addEventListener('mouseleave', function(event) {
-        if (!parentMenuItem.contains(event.relatedTarget)) {
-            submenu.classList.remove('open');
-        }
-    });
-    parentMenuItem.addEventListener('mouseleave', function(event) {
-        if (!submenu.contains(event.relatedTarget)) {
-            submenu.classList.remove('open');
-        }
+        // Hide submenu when mouse leaves submenu or parent menu item
+        submenu.addEventListener('mouseleave', function(event) {
+            if (!parentMenuItem.contains(event.relatedTarget)) {
+                submenu.classList.remove('open');
+            }
+        });
+        parentMenuItem.addEventListener('mouseleave', function(event) {
+            if (!submenu.contains(event.relatedTarget)) {
+                submenu.classList.remove('open');
+            }
+        });
     });
 });
 
@@ -44,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    fetch('http://localhost/WebShop/php/generateMenu(class).php')
+    fetch('http://localhost/WebShop/php/getCategories.php')
         .then(response => response.text())
         .then(data => {
             const menuContainer = document.querySelector('#menuContainer');
