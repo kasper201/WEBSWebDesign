@@ -42,6 +42,6 @@ try {
         echo '<script>alert("Failed to connect to MySQL")</script>';
     }
     //echo '<script>alert("Failed to connect to MySQL")</script>';
-    echo '<script>window.location.href = "./Login.php";</script>';
+    echo '<script>window.location.href = "./adminLoginPage.php";</script>';
     exit;
 }

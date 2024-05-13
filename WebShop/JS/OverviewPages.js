@@ -59,7 +59,7 @@ function fetchGeneral(params)
     console.log("Sending request");
     var queryString = Object.keys(params).map(key => key + '=' + params[key]).join('&');
 
-    console.log("Sending request");
+    console.log("Sending request: " + queryString);
     xhttp.open("GET", "../php/convert4Overview.php?" + queryString, true);
     xhttp.send();
 }

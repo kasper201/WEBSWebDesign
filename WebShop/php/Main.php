@@ -29,7 +29,7 @@
 <script src="../JS/Template.js"></script>
 <script src="../JS/OverviewPages.js"></script>
 <script>
-    fetchGeneral({onSale: "true", category: null});
+    fetchGeneral({onSale: "true", category: null, query: null});
 </script>
 </body>
 </html>

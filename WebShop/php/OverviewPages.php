@@ -6,7 +6,7 @@ include 'getArr.php';
 function overviewPages($queryIn)
 {
     $mysqli = getMysqli();
-
+    error_log("Executing query (OP): " . $queryIn);
     $query = $queryIn;
     $products = getArr($query, $mysqli);
 

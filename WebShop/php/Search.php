@@ -12,23 +12,23 @@
 <div class="main">
     <?php include './standardised/header.php'; ?>
     <div class="content">
-        <div class="items">
-
-        </div>
-
+        <?php
+            $session["Search"] = $_POST['Search'];
+            $search = $session["Search"];
+            echo "<h2>Results for: $search</h2>";
+            $searchQuery = "SELECT * FROM Product WHERE Name LIKE '%$search%' OR Description LIKE '%$search%'";
+        ?>
+        <div class="items"></div>
     </div>
     <?php include './standardised/footer.php'; ?>
 </div>
 <script src="../JS/Template.js"></script>
 <script src="../JS/OverviewPages.js"></script>
 <script>
-    // Get the URL parameters
-    var urlParams = new URLSearchParams(window.location.search);
-
-    // Get the value of id
-    var category = urlParams.get('category');
-
-    fetchGeneral({category: category, productNr: "null", query: "null"});
+    if(!"<?php echo $search; ?>") {
+        window.location.href = "./Main.php";
+    }
+    fetchGeneral({onSale: "null", category:"null", productNr: "null", query: "<?php echo $searchQuery; ?>"});
 </script>
 </body>
 </html>
