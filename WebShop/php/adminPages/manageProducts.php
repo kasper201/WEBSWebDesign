@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add products</title>
+    <title>Manage products</title>
     <link rel="stylesheet" href="../../Design/Template.css">
     <link rel="stylesheet" href="../../Design/Admin.css">
     <link rel="icon" href="../../Images/LogoColour.png">
@@ -12,9 +12,9 @@
 <div class="main">
     <div class="content">
         <button class="BackButton" onclick="window.location.href='admin.php'">Back</button>
-        <h1>Add Products</h1>
+        <h1>Manage Exisiting Products</h1>
         <div class="admin">
-            <form action="../../php/adminPages/addProduct.php" method="post" enctype="multipart/form-data">
+            <form action="../../php/adminPages/changeProduct.php" method="post" enctype="multipart/form-data">
                 <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name" required><br>
                 <label for="price">Price:</label><br>
@@ -41,9 +41,9 @@
                 <input type="file" id="image" name="image" required><br>
                 <input type="submit" value="Submit">
             </form>
+        </div>
     </div>
-</div>
-<script src="../../JS/Template.js"></script>
+    <script src="../../JS/Template.js"></script>
 </body>
 </html>
 <!-- TODO: make categories and subcategories dynamic -->

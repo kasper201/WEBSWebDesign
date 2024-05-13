@@ -20,7 +20,7 @@ class MenuGenerator
                 continue;
             }
             echo "<a href='./Products.php?category=" . $category['ID'] . "'>" . $category['Name'] . "</a>";
-            echo "<div class='submenu'>";
+            echo "<div class='submenu2'>";
             // Get and display the rest of the categories
             $allIDs = $this->getCategories();
             $addedSubmenus = array(); // Array to keep track of added submenus
@@ -43,7 +43,7 @@ class MenuGenerator
 
     public function getCategories()
     {
-        $sql = "SELECT * FROM Category";
+        $sql = "SELECT * FROM Category ORDER BY Name ASC";
         $arr = getArr($sql, $this->mysqli);
         return $arr;
     }

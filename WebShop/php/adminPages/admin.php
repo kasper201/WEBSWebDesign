@@ -15,7 +15,10 @@
         <h1>Admin</h1>
         <div class="admin">
             <a href="./Products.php">
-                <button class="adminButton">Products</button>
+                <button class="adminButton">Add Products</button>
+            </a>
+            <a href="./manageProducts.php">
+                <button class="adminButton">Manage Products</button>
             </a>
             <a href="./Categories.php">
                 <button class="adminButton">Categories</button>
