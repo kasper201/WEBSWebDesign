@@ -14,11 +14,28 @@
         <button class="BackButton" onclick="window.location.href='admin.php'">Back</button>
         <h1>Categories</h1>
         <div class="admin">
-
+            <form action="../../php/adminPages/addCategory.php" method="post" enctype="multipart/form-data">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="parent">Parent:</label><br>
+                <select id="parent" name="parent">
+                <?php
+                include '../../php/getCategories.php';
+                include '../../php/getMysqli.php';
+                $mysqli = getMysqli();
+                $menuGenerator = new MenuGenerator($mysqli);
+                $categories = $menuGenerator->getCategories();
+                ?>
+                    <option value="null">No category</option>
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?= $category['ID'] ?>"><?= $category['Name'] ?></option>
+                    <?php endforeach; ?>
+                </select><br>
+                <input type="submit" value="Submit">
+            </form>
         </div>
     </div>
     <script src="../../JS/Template.js"></script>
 </body>
 </html>
 <!-- one WILL get errors however they won't affect the functionality of the webpage -->
-// TODO: make categories adaptive!!!
