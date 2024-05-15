@@ -82,7 +82,6 @@ xhttp.onreadystatechange = function () {
                 quantityInput.max = 9999;
                 quantityInput.className = 'quantityInput';
 
-                // TODO: fix that one product doesn't affect the other products
                 quantityInput.oninput = function() {
                     if (this.value > 9999) {
                         this.value = 9999;
@@ -187,7 +186,7 @@ xhttp.onreadystatechange = function () {
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 let productIds = cart.map(item => item.ID);
-let productIdsString = productIds.join(',');
+let productIdsString = productIds.join(',') + "&onSale=null";
 
 let productAmount = cart.map(item => item.Quantity);
 

@@ -8,6 +8,7 @@ $query = $_GET['query'];
 error_log("Received query: " . $query);
 error_log("Category: " . $category);
 error_log("OnlySale: " . $onlySale);
+error_log("Basket: " . $basket);
 
 if($onlySale != "null") {
     if ($category == "null") { // if no category is selected
