@@ -15,12 +15,13 @@
         <h1>Login</h1>
         <form action="./processLogin.php" method="post">
             <label>
-                <input type="text" name="username/Email" placeholder="Username" required="required" />
+                <input type="text" name="email" placeholder="Email" required="required" />
             </label>
             <label>
                 <input type="password" name="password" placeholder="Password" required="required" />
             </label>
-            <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+            <button type="submit" name="login" class="login">Login</button>
+            <button type="submit" name="register" class="register">Register</button>
         </form>
     </div>
     <?php include './standardised/footer.php'; ?>

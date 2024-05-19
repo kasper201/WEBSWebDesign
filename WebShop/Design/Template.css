@@ -34,6 +34,11 @@ footer {
 
 footer .adminButton {
     margin-right: 5px;
+    padding: 5px;
+    background: #14638c;
+    border-radius: 10px;
+    border: none;
+    color: white;
 }
 
 footer p {

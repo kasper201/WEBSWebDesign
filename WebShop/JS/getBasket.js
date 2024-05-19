@@ -22,8 +22,13 @@ xhttp.onreadystatechange = function () {
             goToCheckout.textContent = 'TO CHECKOUT';
 
             goToCheckout.onclick = function () { // add to cart
-
-                alert("JK YOU CAN'T");
+                if(localStorage.getItem('user') === null) {
+                    alert('Please log in to continue');
+                    return;
+                } else if(cart.length === 0) {
+                    alert('Cart is empty');
+                    return;
+                }
             }
 
             // log to console for debugging
