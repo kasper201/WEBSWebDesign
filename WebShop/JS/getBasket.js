@@ -1,6 +1,13 @@
 let totalPrice = 0; // Total price for all items in the cart
 
-// Get the products from the server
+// create order
+function createOrder() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    let productIds = cart.map(item => item.ID);
+    // insert the products into the order
+}
+
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -29,6 +36,7 @@ xhttp.onreadystatechange = function () {
                     alert('Cart is empty');
                     return;
                 }
+                createOrder();
             }
 
             // log to console for debugging
