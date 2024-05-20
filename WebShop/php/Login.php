@@ -23,6 +23,7 @@
             <button type="submit" name="login" class="login">Login</button>
             <button type="submit" name="register" class="register">Register</button>
         </form>
+        <button type="button" class="logOut" onclick="deleteCookie('username'); window.location.href = './Main.php';">Log out</button>
     </div>
     <?php include './standardised/footer.php'; ?>
 </div>
