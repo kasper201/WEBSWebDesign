@@ -77,7 +77,7 @@ class processLogin
     {
         if ($this->loginQuery($email, $password)) {
             echo "<script>console.log('Logged in');</script>";
-            setcookie('user', $this->getID($email), time() + (86400 * 30), "/");
+            setcookie('user', $this->getID($email) . "-" . strstr($email, '@', true), time() + (86400 * 30), "/");
             return 0;
         } else {
             if($this->getID($email) > 0)
@@ -123,7 +123,7 @@ class processLogin
         $this->createQuery($email, $password);
 
         echo "<script>console.log('User created');</script>";
-        setcookie('user', $this->getID($email), time() + (86400 * 30), "/");
+        setcookie('user', $this->getID($email) . "-" . strstr($email, '@', true), time() + (86400 * 30), "/");
         return 0;
     }
 }
