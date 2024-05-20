@@ -15,14 +15,11 @@ if(isset($_POST['login']))
     $e = $processLogin->loginUser($_POST['email'], $_POST['password']);
     if($e === 0)
     {
-        echo '<script>localStorage.setItem("username", "' . $_POST['email'] . '");</script>';
         echo '<script>window.location.href = "./Main.php";</script>';
         exit;
     }
     else
     {
-        echo '<script>localStorage.setItem("username", "' . $_POST['email'] . '");</script>';
-        echo "<script>alert('Failed to login');</script>";
         echo '<script>window.location.href = "./Login.php";</script>';
         exit;
     }
@@ -67,29 +64,41 @@ class processLogin
 
     private function loginQuery($email, $password)
     {
-        $encryptedEmail = $this->encrypt($email);
-        $encryptedPassword = $this->encrypt($password);
-        $query = "SELECT * FROM User WHERE Email = $encryptedPassword AND Password = $encryptedEmail";
-        return getArr($query, $this->mysqli);
+        $query = "SELECT password FROM User WHERE Email = '$email'";
+        $passwordStored = getArr($query, $this->mysqli);
+        if (password_verify($password, $passwordStored[0]['password'])) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     public function loginUser($email, $password)
     {
         if ($this->loginQuery($email, $password)) {
             echo "<script>console.log('Logged in');</script>";
-            echo "<script>localStorage.setItem('username', '$email');</script>";
+            setcookie('user', $this->getID($email), time() + (86400 * 30), "/");
             return 0;
         } else {
-            echo "<script>console.log('Failed to login');</script>";
+            if($this->getID($email) > 0)
+            {
+                echo "<script>console.log('Wrong password');</script>";
+                echo "<script>alert('Wrong password');</script>";
+            }
+            else
+            {
+                echo "<script>console.log('User does not exist');</script>";
+                echo "<script>alert('User does not exist');</script>";
+            }
             return 1;
         }
     }
 
-    private function createQuery($username, $password)
+    private function createQuery($email, $password)
     {
         $encryptedPassword = $this->encrypt($password);
-        $query = "CALL AddUser('$encryptedPassword', '$username');";
-        return getArr($query, $this->mysqli);
+        $query = "CALL AddUser('$encryptedPassword', '$email');";
+        getArr($query, $this->mysqli);
     }
 
     private function checkUser($email)
@@ -103,18 +112,18 @@ class processLogin
         }
     }
 
-    public function createUser($username, $password)
+    public function createUser($email, $password)
     {
-        if ($this->checkUser($username)) {
+        if ($this->checkUser($email)) {
             echo "<script>console.log('User already exists');</script>";
             echo "<script>alert('User already exists');</script>";
             return 1;
         }
 
-        $this->createQuery($username, $password);
+        $this->createQuery($email, $password);
 
         echo "<script>console.log('User created');</script>";
-        setcookie('user', $this->getID($username), time() + (86400 * 30), "/");
+        setcookie('user', $this->getID($email), time() + (86400 * 30), "/");
         return 0;
     }
 }
