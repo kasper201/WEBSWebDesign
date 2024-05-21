@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    fetch('http://localhost/WebShop/php/getCategories.php')
+    fetch('./getCategories.php')
         .then(response => response.text())
         .then(data => {
             const menuContainer = document.querySelector('#menuContainer');

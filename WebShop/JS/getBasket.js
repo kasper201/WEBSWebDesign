@@ -1,12 +1,43 @@
 let totalPrice = 0; // Total price for all items in the cart
 
+function getCookie(name) {
+    let cookieArr = document.cookie.split(";");
+
+    for(let i = 0; i < cookieArr.length; i++) {
+        let cookiePair = cookieArr[i].split("=");
+
+        if(name == cookiePair[0].trim()) {
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+
+    return null;
+}
+
 // create order
 function createOrder() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     let productIds = cart.map(item => item.ID);
     // insert the products into the order
-    "CALL AddOrder(orderID, userID, productID, quantity);"
+    let userID = getCookie('user');
+    let userIDParts = userID.split("-");
+    let orderID = new Date().getTime();
+
+    for(let i = 0; i < productIds.length; i++) {
+        let query = "CALL AddOrder(" + orderID + ", " + userIDParts[0] + ", " + productIds[i] + ", " + cart[i].Quantity + ");";
+        console.log(query);
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // Handle the response from getArr.php here
+                console.log(this.responseText);
+            }
+        };
+        xhttp.open("GET", "../php/convert4Overview.php?onSale=null&productNr=null&query=" + encodeURIComponent(query), true);
+        xhttp.send();
+    }
 }
 
 var xhttp = new XMLHttpRequest();
@@ -30,7 +61,7 @@ xhttp.onreadystatechange = function () {
             goToCheckout.textContent = 'TO CHECKOUT';
 
             goToCheckout.onclick = function () { // add to cart
-                if(localStorage.getItem('user') === null) {
+                if(getCookie('user') === null) {
                     alert('Please log in to continue');
                     return;
                 } else if(cart.length === 0) {
@@ -210,5 +241,5 @@ let productAmount = cart.map(item => item.Quantity);
 console.log(productIds);
 
 console.log("Sending request");
-xhttp.open("GET", "../php/convert4Overview.php?productNr=" + productIdsString, true);
+xhttp.open("GET", "../php/convert4Overview.php?onSale=null&productNr=null&productNr=" + productIdsString, true);
 xhttp.send();
