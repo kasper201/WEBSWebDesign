@@ -6,6 +6,7 @@ function createOrder() {
 
     let productIds = cart.map(item => item.ID);
     // insert the products into the order
+    "CALL AddOrder(orderID, userID, productID, quantity);"
 }
 
 var xhttp = new XMLHttpRequest();
@@ -117,7 +118,10 @@ xhttp.onreadystatechange = function () {
                     // recalculate the total price of the cart
                     totalPrice = 0;
                     for (let i = 0; i < cart.length; i++) {
-                        totalPrice += products[i].Price * cart[i].Quantity;
+                        let productInCart = products.find(p => p.ID == cart[i].ID);
+                        if (productInCart) {
+                            totalPrice += productInCart.Price * cart[i].Quantity;
+                        }
                     }
 
                     totalProductPrice.textContent = `Total: €${parseFloat((totalPrice).toFixed(2))}`;
