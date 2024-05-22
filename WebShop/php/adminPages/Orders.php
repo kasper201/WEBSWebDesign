@@ -6,6 +6,7 @@
     <title>Kaspers Shop</title>
     <link rel="stylesheet" href="../../Design/Template.css">
     <link rel="stylesheet" href="../../Design/Admin.css">
+    <link rel="stylesheet" href="../../Design/Orders.css">
     <link rel="icon" href="../../Images/LogoColour.png">
 </head>
 <body>
@@ -17,15 +18,7 @@
 
         </div>
     </div>
-    <script src="../../JS/Template.js"></script>
     <script src="../../JS/orders.js"></script>
 </body>
 </html>
-<?php
-include './getAdminMysqli.php';
-include '../getArr.php';
-
-$mysqli = getAdminMysqli();
-$orders = getArr($_GET['query'], $mysqli);
-?>
 <!-- one WILL get errors however they won't affect the functionality of the webpage -->

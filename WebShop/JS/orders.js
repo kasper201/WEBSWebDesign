@@ -1,9 +1,9 @@
-fetch('./Orders.php?query=CALL%20getOrders()')
+fetch('./getOrders.php?query=CALL%20getOrders()')
     .then(response => response.json())
     .then(data => {
         let table = document.createElement('table');
         // Create table headers
-        let headers = ['userID', 'productID', 'Name', 'Quantity', 'state'];
+        let headers = ['ID', 'userID', 'Email', 'productID', 'Name', 'Quantity', 'state'];
         let thead = document.createElement('thead');
         let headerRow = document.createElement('tr');
         headers.forEach(header => {
@@ -23,7 +23,8 @@ fetch('./Orders.php?query=CALL%20getOrders()')
                 td.textContent = row[header];
                 td.contentEditable = 'true';
                 td.addEventListener('blur', function() {
-                    console.log(`Updated ${header} of row with userID ${row['userID']} and productID ${row['productID']} to ${td.textContent}`);
+                    updateDatabase(header, row['ID'], td.textContent);
+                    console.log(`Updated ${header} of row with order ID ${row['ID']} and productID ${row['productID']} to ${td.textContent}`);
                 });
                 tr.appendChild(td);
             });

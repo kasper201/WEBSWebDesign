@@ -13,7 +13,7 @@ if(isset($_POST['login']))
     $mysqli = getMysqli();
     $processLogin = new processLogin($mysqli);
     $e = $processLogin->loginUser($_POST['email'], $_POST['password']);
-    if($e === 0)
+    if($e == 0)
     {
         echo '<script>window.location.href = "./Main.php";</script>';
         exit;
@@ -29,7 +29,7 @@ if(isset($_POST['login']))
     $mysqli = getMysqli();
     $processLogin = new processLogin($mysqli);
     $e = $processLogin->createUser($_POST['email'], $_POST['password']);
-    if($e === 0)
+    if($e == 0)
     {
         echo '<script>window.location.href = "./Main.php";</script>';
         exit;
