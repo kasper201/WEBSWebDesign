@@ -6,6 +6,7 @@
     <title>Manage products</title>
     <link rel="stylesheet" href="../../Design/Template.css">
     <link rel="stylesheet" href="../../Design/Admin.css">
+    <link rel="stylesheet" href="../../Design/Orders.css">
     <link rel="icon" href="../../Images/LogoColour.png">
 </head>
 <body>
@@ -14,36 +15,17 @@
         <button class="BackButton" onclick="window.location.href='admin.php'">Back</button>
         <h1>Manage Exisiting Products</h1>
         <div class="admin">
-            <form action="../../php/adminPages/changeProduct.php" method="post" enctype="multipart/form-data">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br>
-                <label for="price">Price:</label><br>
-                <input type="text" id="price" name="price" pattern="^\d*(\.\d{0,2})?$" required><br>
-                <label for="description">Description:</label><br>
-                <textarea id="description" name="description" required></textarea><br>
-                <label for="category">Category:</label><br>
-                <?php
-                include '../../php/getCategories.php';
-                include '../../php/getMysqli.php';
-                $mysqli = getMysqli();
-                $menuGenerator = new MenuGenerator($mysqli);
-                $categories = $menuGenerator->getCategories();
-                ?>
-
-                <select id="category" name="category" required>
-                    <?php foreach ($categories as $category): ?>
-                        <option value="<?= $category['ID'] ?>"><?= $category['Name'] ?></option>
-                    <?php endforeach; ?>
-                </select><br>
-                <label for="onSale">On Sale:</label><br>
-                <input type="checkbox" id="onSale" name="onSale"><br>
-                <label for="image">Image:</label><br>
-                <input type="file" id="image" name="image" required><br>
-                <input type="submit" value="Submit">
-            </form>
+            <table id="productTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price (€)</th>
+                    <th>Description</th>
+                    <th>OnSale</th>
+                </tr>
+            </table>
         </div>
     </div>
-    <script src="../../JS/Template.js"></script>
+    <script src="../../JS/changeProducts.js"></script>
 </body>
 </html>
-<!-- TODO: make categories and subcategories dynamic -->
