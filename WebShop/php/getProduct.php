@@ -10,7 +10,7 @@ $id = $_GET['productNr'];
 
 error_log("id: " . $id);
 
-$query = "select * from Product where ID = $id";
+$query = "select * from Product where ID = $id AND inStock = 1";
 
 error_log("Query: " . $query);
 
@@ -26,6 +26,11 @@ foreach ($products as $key => $product) {
     $products[$key]['image'] = base64_encode($product['image']);
     $products[$key]['thumbnail'] = base64_encode($product['thumbnail']); // encode the image and thumbnail as base64
 }*/
+
+if(count($products) == 0) {
+    http_response_code(404);
+    exit;
+}
 
 // Return products information as JSON
 header('Content-Type: application/json');

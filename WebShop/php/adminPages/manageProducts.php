@@ -22,6 +22,7 @@
                     <th>Price (€)</th>
                     <th>Description</th>
                     <th>OnSale</th>
+                    <th>In Stock</th>
                 </tr>
             </table>
         </div>

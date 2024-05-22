@@ -83,4 +83,9 @@ if ($exec === false) {
 // Close the statement
 mysqli_stmt_close($stmt);
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// save the category to the database
+
+getArr("INSERT INTO ProductCategory (ProductID, CategoryID) VALUES ($id, $category)", $mysqli);
+
 header('Location: ../adminPages/Products.php');

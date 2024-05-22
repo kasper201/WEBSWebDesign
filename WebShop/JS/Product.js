@@ -109,6 +109,8 @@ xhttp.onreadystatechange = function () {
         console.log("Error: " + this.status);
         console.log("response: " + this.responseText);
         console.log("State: " + this.readyState);
+    } else if (this.status == 404) {
+        window.location.href = '../404.html';
     } else {
         console.log("Error: " + this.status);
         console.log("State: " + this.readyState);

@@ -12,9 +12,9 @@ error_log("Basket: " . $basket);
 
 if($onlySale != "null") {
     if ($category == "null") { // if no category is selected
-        overviewPages("select * from Product where OnSale = 1");
+        overviewPages("select * from Product where OnSale = 1 AND inStock = 1");
     } else { // if a category is selected also look for the category
-        overviewPages("select * from Product JOIN ProductCategory ON Product.ID = ProductCategory.ProductID where OnSale = 1 AND ProductCategory.CategoryID = $category");
+        overviewPages("select * from Product JOIN ProductCategory ON Product.ID = ProductCategory.ProductID where OnSale = 1 AND inStock = 1 AND ProductCategory.CategoryID = $category");
     }
 } elseif ($basket != "null") {
     overviewPages("SELECT * FROM Product WHERE ID IN ($basket)");
@@ -22,8 +22,8 @@ if($onlySale != "null") {
     overviewPages("$query");
 } else {
     if ($category == "null") { // this makes it possible to decide on which category to show (not implemented)
-        overviewPages("select * from Product");
+        overviewPages("select * from Product WHERE inStock = 1");
     } else {
-        overviewPages("select * from Product JOIN ProductCategory ON Product.ID = ProductCategory.ProductID where ProductCategory.CategoryID = $category");
+        overviewPages("select * from Product JOIN ProductCategory ON Product.ID = ProductCategory.ProductID where ProductCategory.CategoryID = $category AND inStock = 1");
     }
 }
