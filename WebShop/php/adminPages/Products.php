@@ -43,7 +43,6 @@
             </form>
     </div>
 </div>
-<script src="../../JS/Template.js"></script>
 </body>
 </html>
-<!-- TODO: make categories and subcategories dynamic -->
+<!-- TODO: connect to categories -->

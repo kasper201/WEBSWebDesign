@@ -15,6 +15,7 @@
     body {
         background-color: #1e1f22;
         font-family: Arial, sans-serif;
+        font-size: 100%;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -103,6 +104,7 @@ footer p {
 .GoToProducts {
     cursor: pointer;
     padding: 30px;
+    font-size: inherit;
 }
 
 .SearchBar {

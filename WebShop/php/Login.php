@@ -15,7 +15,8 @@
         <h1>Login</h1>
         <form action="./processLogin.php" method="post">
             <label>
-                <input type="text" name="email" placeholder="Email" required="required" />
+                <input type="text" id="email" name="email" placeholder="Email" required="required" />
+                <span id="emailValidation"></span>
             </label>
             <label>
                 <input type="password" name="password" placeholder="Password" required="required" />
@@ -28,5 +29,6 @@
     <?php include './standardised/footer.php'; ?>
 </div>
 <script src="../JS/Template.js"></script>
+<script src="../JS/account.js"></script>
 </body>
 </html>

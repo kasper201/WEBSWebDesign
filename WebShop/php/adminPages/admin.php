@@ -32,7 +32,5 @@
         </div>
     </div>
 </div>
-<script src="../../JS/Template.js"></script>
 </body>
 </html>
-<!-- one WILL get errors however they won't affect the functionality of the webpage -->
