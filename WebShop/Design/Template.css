@@ -165,3 +165,7 @@ footer p {
 .error404 img {
     height: 70vh;
 }
+
+.adminButton:hover {
+    cursor: pointer;
+}

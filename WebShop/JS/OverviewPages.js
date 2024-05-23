@@ -26,7 +26,7 @@ function fetchGeneral(params)
                         console.log("Error loading image: ", event);
                         console.log("Failed to load image with src: ", this.src);
                         this.onerror = null; // To prevent infinite loop in case the placeholder image doesn't exist
-                        this.src = '../Images/Basket.png';
+                        this.src = '../Images/ohno.png';
                     };
 
                     let productName = document.createElement('h3');
@@ -35,11 +35,56 @@ function fetchGeneral(params)
                     let productPrice = document.createElement('p');
                     productPrice.textContent = `Price: €${product.Price}`;
 
+                    let addToCartDiv = document.createElement('div');
+                    addToCartDiv.className = 'addToCartDiv';
+
+                    let quantityInput = document.createElement('input');
+                    quantityInput.type = 'number';
+                    quantityInput.value = 1;
+                    quantityInput.min = 1;
+                    quantityInput.max = 999;
+                    quantityInput.className = 'quantityInput';
+
+                    quantityInput.oninput = function() {
+                        if (this.value > 999) {
+                            this.value = 999;
+                        } else if (this.value < 1) {
+                            this.value = 1;
+                        }
+                    }
+
+                    let addToCartButton = document.createElement('button');
+                    addToCartButton.className = 'addToCart';
+
+                    addToCartButton.onclick = function () { // add to cart
+                        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                        let productIndex = cart.findIndex(p => p.ID == product.ID);
+                        if (productIndex >= 0) {
+                            cart[productIndex].Quantity += parseInt(quantityInput.value);
+                        } else {
+                            cart.push({
+                                ProductNr: product.ProductNr,
+                                ID: parseInt(product.ID),
+                                Quantity: parseInt(quantityInput.value)
+                            });
+                        }
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        alert('Added to cart');
+                    }
+
+                    let productButtomImage = document.createElement('img');
+                    productButtomImage.src = '../Images/Basket.png';
+
+                    addToCartButton.appendChild(productButtomImage);
+
                     productLink.appendChild(productImage);
                     productLink.appendChild(productName);
                     productLink.appendChild(productPrice);
+                    addToCartDiv.appendChild(quantityInput);
+                    addToCartDiv.appendChild(addToCartButton);
 
                     productDiv.appendChild(productLink);
+                    productDiv.appendChild(addToCartDiv);
 
                     productsContainer.appendChild(productDiv);
                     console.log(productsContainer.outerHTML);
