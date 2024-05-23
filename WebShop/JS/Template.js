@@ -25,6 +25,38 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+    // Get all submenu and parent menu item
+    var submenus = document.querySelectorAll('.submenuLogin');
+    var parentMenuItems = document.querySelectorAll('.loginInfo');
+    var timeoutId;
+
+    // Show submenu when hovering over parent menu item
+    parentMenuItems.forEach(function(parentMenuItem, index) {
+        var submenu = submenus[index];
+        parentMenuItem.addEventListener('mouseenter', function() {
+            clearTimeout(timeoutId);
+            submenu.classList.add('open');
+        });
+
+        // Hide submenu when mouse leaves submenu or parent menu item
+        submenu.addEventListener('mouseleave', function(event) {
+            if (!parentMenuItem.contains(event.relatedTarget)) {
+                timeoutId = setTimeout(function() {
+                    submenu.classList.remove('open');
+                }, 200);
+            }
+        });
+        parentMenuItem.addEventListener('mouseleave', function(event) {
+            if (!submenu.contains(event.relatedTarget)) {
+                timeoutId = setTimeout(function() {
+                    submenu.classList.remove('open');
+                }, 200);
+            }
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
     // Get the button element
     var button = document.querySelector('.GoToContact');
 
