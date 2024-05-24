@@ -38,6 +38,9 @@ function createOrder() {
         xhttp.open("GET", "../php/convert4Overview.php?onSale=null&productNr=null&query=" + encodeURIComponent(query), true);
         xhttp.send();
     }
+    alert('Order created');
+    localStorage.removeItem('cart');
+    location.reload();
 }
 
 var xhttp = new XMLHttpRequest();
