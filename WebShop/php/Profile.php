@@ -32,7 +32,7 @@
             <label>
                 <input type="text" id="city" name="city" placeholder="City" />
             </label>
-            <button class="saveButton" type="submit">Save</button>
+            <button class="saveButton" type="submit" id="submit">Save</button>
         </form>
     </div>
     <?php include './standardised/footer.php'; ?>
