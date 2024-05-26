@@ -86,6 +86,8 @@ mysqli_stmt_close($stmt);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// save the category to the database
 
-getArr("INSERT INTO ProductCategory (ProductID, CategoryID) VALUES ($id, $category)", $mysqli);
+foreach ($_POST['category'] as $categoryId) { // Loop through each category and add it to the database
+    getArr("INSERT INTO ProductCategory (ProductID, CategoryID) VALUES ($id, $categoryId)", $mysqli);
+}
 
 header('Location: ../adminPages/Products.php');

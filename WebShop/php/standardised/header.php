@@ -53,3 +53,26 @@
     </script>
 
 </div>
+<div class="CategorySelector">
+
+    <?php
+    include '../../php/getCategories.php';
+    include '../../php/getMysqli.php';
+    $mysqli = getMysqli();
+    $menuGenerator = new MenuGenerator($mysqli);
+    $categories = $menuGenerator->getCategories();
+    $current_page = basename($_SERVER['PHP_SELF']);
+
+    if ($current_page == 'Products.php' || $current_page == 'Main.php') {
+    ?>
+
+    <label>
+        <select id="category" name="category" onchange="redirectToCategory()">
+            <option value="ALL">ALL</option>
+            <?php foreach ($categories as $category): ?>
+                <option value="<?= $category['ID'] ?>"><?= $category['Name'] ?></option>
+            <?php endforeach; ?>
+        </select>
+    </label>
+    <?php } ?>
+</div>

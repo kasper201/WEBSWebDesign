@@ -30,11 +30,12 @@
                 $categories = $menuGenerator->getCategories();
                 ?>
 
-                <select id="category" name="category" required>
+                <select id="category" name="category[]" multiple required>
                     <?php foreach ($categories as $category): ?>
                         <option value="<?= $category['ID'] ?>"><?= $category['Name'] ?></option>
                     <?php endforeach; ?>
-                </select><br>
+                </select>
+                <br>
                 <label for="onSale">On Sale:</label><br>
                 <input type="checkbox" id="onSale" name="onSale"><br>
                 <label for="image">Image:</label><br>
@@ -45,4 +46,3 @@
 </div>
 </body>
 </html>
-<!-- TODO: connect to categories -->

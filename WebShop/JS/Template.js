@@ -92,3 +92,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
 function deleteCookie(name) {
     document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
+
+function redirectToCategory() {
+    var categorySelect = document.getElementById('category');
+    var selectedCategory = categorySelect.options[categorySelect.selectedIndex].value;
+    var currentPage = window.location.pathname.split('/').pop();
+
+    // Only redirect if the current page is Products.php or Main.php
+    if (currentPage === 'Products.php' || currentPage === 'Main.php') {
+        if (selectedCategory === 'ALL') {
+            window.location.href = currentPage;
+        } else {
+            window.location.href = currentPage + '?category=' + selectedCategory;
+        }
+    }
+}
