@@ -104,23 +104,27 @@ class processLogin
     private function mail($emailIn)
     {
         require '../../vendor/autoload.php';
+        $mail = new PHPMailer\PHPMailer\PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = 'smtp.sendgrid.net';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'apikey'; // this is the SendGrid API Key
+        $mail->Password = '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'; // safe(not)
+        $mail->SMTPSecure = 'tls'; // use 'ssl' for port 465
+        $mail->Port = 587; // use 25 for unencrypted/TLS connections, 465 for SSL connections
 
-        $email = new \SendGrid\Mail\Mail();
-        $email->setFrom("kasperjnssen@gmail.com", "User");
-        $email->setSubject("Account Confirmation");
-        $email->addTo("$emailIn", "recepient");
-        $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
-        $email->addContent(
-            "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
-        );
-        $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+        $mail->setFrom('kasperjnssen@gmail.com', 'Kasper Janssen');
+        $mail->addAddress($emailIn, 'recipient');
+        $mail->isHTML(true);
+        $mail->Subject = 'Account Confirmation';
+        $mail->Body    = '<strong>Thank you for registering at Kaspers Shop</strong>';
+        $mail->AltBody = 'and easy to do anywhere, even with PHP';
+
         try {
-            $response = $sendgrid->send($email);
-            print $response->statusCode() . "\n";
-            print_r($response->headers());
-            print $response->body() . "\n";
+            $mail->send();
+            echo 'Message has been sent';
         } catch (Exception $e) {
-            echo 'Caught exception: '. $e->getMessage() ."\n";
+            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
         }
     }
 
