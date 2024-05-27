@@ -109,16 +109,16 @@ class processLogin
         $mail->Host = 'smtp.sendgrid.net';
         $mail->SMTPAuth = true;
         $mail->Username = 'apikey'; // this is the SendGrid API Key
-        $mail->Password = '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'; // safe(not)
+        $mail->Password = getenv('SENDGRID_API_KEY'); // this is the SendGrid API Key
         $mail->SMTPSecure = 'tls'; // use 'ssl' for port 465
         $mail->Port = 587; // use 25 for unencrypted/TLS connections, 465 for SSL connections
 
-        $mail->setFrom('kasperjnssen@gmail.com', 'Kasper Janssen');
-        $mail->addAddress($emailIn, 'recipient');
+        $mail->setFrom('kasperjnssen@gmail.com', 'Kaspers Shop');
+        $mail->addAddress($emailIn, 'recepient');
         $mail->isHTML(true);
         $mail->Subject = 'Account Confirmation';
         $mail->Body    = '<strong>Thank you for registering at Kaspers Shop</strong>';
-        $mail->AltBody = 'and easy to do anywhere, even with PHP';
+        $mail->AltBody = 'Thank you for registering at Kaspers Shop';
 
         try {
             $mail->send();
