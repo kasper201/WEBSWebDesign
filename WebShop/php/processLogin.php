@@ -101,6 +101,29 @@ class processLogin
         getArr($query, $this->mysqli);
     }
 
+    private function mail($emailIn)
+    {
+        require '../../vendor/autoload.php';
+
+        $email = new \SendGrid\Mail\Mail();
+        $email->setFrom("kasperjnssen@gmail.com", "User");
+        $email->setSubject("Account Confirmation");
+        $email->addTo("$emailIn", "recepient");
+        $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
+        $email->addContent(
+            "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
+        );
+        $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+        try {
+            $response = $sendgrid->send($email);
+            print $response->statusCode() . "\n";
+            print_r($response->headers());
+            print $response->body() . "\n";
+        } catch (Exception $e) {
+            echo 'Caught exception: '. $e->getMessage() ."\n";
+        }
+    }
+
     private function checkUser($email)
     {
         $query = "SELECT * FROM User WHERE Email = '$email'";
@@ -121,8 +144,10 @@ class processLogin
         }
 
         $this->createQuery($email, $password);
+        $this->mail($email);
 
         echo "<script>console.log('User created');</script>";
+        echo "<script>console.log('emailed:$email')</script>";
         setcookie('user', $this->getID($email) . "-" . strstr($email, '@', true), time() + (86400 * 30), "/");
         return 0;
     }

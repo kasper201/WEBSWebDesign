@@ -31,15 +31,14 @@ document.getElementById('email').addEventListener('input', function() {
 });
 
 // to be finished
-/*
-registerButton.addEventListener('click', function() {
-    let email = document.getElementById('email').value;
 
-    if (validateEmail(email)) {
-        // If the email is valid, make an AJAX call to mail.php
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "../php/mail.php", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send(`email=${email}`);
-    }
-}*/
+// registerButton.addEventListener('click', function() {
+//     let email = document.getElementById('email').value;
+//     console.log(":3");
+//
+//     // If the email is valid, make an AJAX call to mail.php
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.open("POST", "../php/mail.php", true);
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhttp.send(`email=${email}`);
+// });
